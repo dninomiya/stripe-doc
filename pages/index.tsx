@@ -1,17 +1,31 @@
-import { Tab } from '@headlessui/react';
+import { Firebase, ReactJs, Stripe } from '@icons-pack/react-simple-icons';
 import type { NextPage } from 'next';
 import Head from 'next/head';
-import { classNames } from '../lib/class-names';
-import styles from '../styles/Home.module.css';
+import { FC, Fragment } from 'react';
+import Code from '../components/code';
 
 const FLOW = [
   {
     title: '環境構築',
-    stripe: 'xxx',
-    react: 'xxx',
-    nodejs: 'xxx',
+    stripe: (
+      <div>
+        <Code fileName="ターミナル" lang="bash">
+          npm install stripe
+        </Code>
+      </div>
+    ),
+    react: (
+      <Code fileName="ターミナル" lang="bash">
+        npm install stripe
+      </Code>
+    ),
+    firebase: 'xxx',
   },
 ];
+
+const Cell: FC = ({ children }) => {
+  return <div className="py-10 col-span-2 px-4">{children}</div>;
+};
 
 const Home: NextPage = () => {
   return (
@@ -22,23 +36,35 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <div className="grid grid-cols-7 mb-20">
-        <div className="border-b py-4"></div>
-        <div className="col-span-2  py-4 border-b">Stripe</div>
-        <div className="col-span-2  py-4 border-b">React</div>
-        <div className="col-span-2  py-4 border-b">Node.js</div>
-        {FLOW.map((item, index) => (
-          <>
-            <div className="py-10">
-              <h2>STEP {index + 1}</h2>
-              <p className="font-bold text-lg">{item.title}</p>
+      <div className="mb-20">
+        <div className="grid grid-cols-7 sticky top-0">
+          <div className="border-b py-4"></div>
+          <div className="col-span-2 px-4 py-4 border-b text-center">
+            <Stripe size={32} className="mx-auto text-gray-500" />
+            <span className="text-sm text-gray-600">Stripe</span>
+          </div>
+          <div className="col-span-2 px-4 py-4 border-b text-center">
+            <ReactJs size={32} className="mx-auto text-gray-500" />
+            <span className="text-sm text-gray-600">React</span>
+          </div>
+          <div className="col-span-2 px-4 py-4 border-b text-center">
+            <Firebase size={32} className="mx-auto text-gray-500" />
+            <span className="text-sm text-gray-600">Firebase</span>
+          </div>
+        </div>
+        <div className="divide-dashed divide-y">
+          {FLOW.map((item, index) => (
+            <div className="grid grid-cols-7" key={index}>
+              <div className="py-10">
+                <h2>STEP {index + 1}</h2>
+                <p className="font-bold text-lg">{item.title}</p>
+              </div>
+              <Cell>{item.stripe}</Cell>
+              <Cell>{item.react}</Cell>
+              <Cell>{item.firebase}</Cell>
             </div>
-            <div className="py-10 col-span-2">{item.stripe}</div>
-            <div className="py-10 col-span-2">{item.react}</div>
-            <div className="py-10 col-span-2">{item.nodejs}</div>
-          </>
-        ))}
-        <div></div>
+          ))}
+        </div>
       </div>
     </div>
   );
