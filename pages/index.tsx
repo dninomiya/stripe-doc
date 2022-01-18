@@ -1,30 +1,49 @@
-import { Firebase, ReactJs, Stripe } from '@icons-pack/react-simple-icons';
+import { FlagIcon, PencilIcon } from '@heroicons/react/outline';
+import { Firebase, Nextdotjs, Stripe } from '@icons-pack/react-simple-icons';
 import type { NextPage } from 'next';
 import Head from 'next/head';
-import { FC, Fragment } from 'react';
-import Code from '../components/code';
+import { FC } from 'react';
+import Doc from '../components/doc';
 
-const FLOW = [
-  {
-    title: '環境構築',
-    stripe: (
-      <div>
-        <Code fileName="ターミナル" lang="bash">
-          npm install stripe
-        </Code>
-      </div>
-    ),
-    react: (
-      <Code fileName="ターミナル" lang="bash">
-        npm install stripe
-      </Code>
-    ),
-    firebase: 'xxx',
-  },
-];
+const STEPS = ['環境構築', '商品の作成と表示', '商品の購入'];
 
 const Cell: FC = ({ children }) => {
-  return <div className="py-10 col-span-2 px-4">{children}</div>;
+  return <div className="col-span-2">{children}</div>;
+};
+
+const buildDoc = (category: string, index: number) => {
+  try {
+    const doc = require(`../docs/${category}-${index}.md`)?.default;
+    return (
+      <div className="group hover:shadow transition-shadow rounded-md p-4">
+        <Doc>{doc}</Doc>
+        <div className="items-center space-x-4 justify-end group-hover:visible flex invisible mt-4 text-gray-400 text-sm">
+          <a
+            href={encodeURI(
+              `https://github.com/flock-team/stripe-doc/issues/new?body=該当ドキュメント\nhttps://github.com/flock-team/stripe-doc/blob/main/docs/${category}-${index}.md\n\n報告内容\n&title=ドキュメント報告: ${category}-${index}`
+            )}
+            target="_blank"
+            className="flex items-center space-x-2 hover:text-gray-700"
+            rel="noreferrer"
+          >
+            <FlagIcon className="w-4 h-4 inline" />
+            <span>報告</span>
+          </a>
+          <a
+            href={`https://github.com/flock-team/stripe-doc/edit/main/docs/${category}-${index}.md`}
+            target="_blank"
+            className="flex items-center space-x-2 hover:text-gray-700"
+            rel="noreferrer"
+          >
+            <PencilIcon className="w-4 h-4 inline" />
+            <span>編集</span>
+          </a>
+        </div>
+      </div>
+    );
+  } catch (err) {
+    return null;
+  }
 };
 
 const Home: NextPage = () => {
@@ -37,31 +56,33 @@ const Home: NextPage = () => {
       </Head>
 
       <div className="mb-20">
-        <div className="grid grid-cols-7 sticky top-0">
-          <div className="border-b py-4"></div>
-          <div className="col-span-2 px-4 py-4 border-b text-center">
+        <div className="grid grid-cols-7 gap-2 sticky top-0 py-4 border-b bg-white">
+          <div></div>
+          <div className="col-span-2 px-4 text-center">
             <Stripe size={32} className="mx-auto text-gray-500" />
-            <span className="text-sm text-gray-600">Stripe</span>
+            <span className="block mt-2 text-sm text-gray-600">Stripe</span>
           </div>
-          <div className="col-span-2 px-4 py-4 border-b text-center">
-            <ReactJs size={32} className="mx-auto text-gray-500" />
-            <span className="text-sm text-gray-600">React</span>
+          <div className="col-span-2 px-4 text-center">
+            <Nextdotjs size={32} className="mx-auto text-gray-500" />
+            <span className="block mt-2 text-sm text-gray-600">Next.js</span>
           </div>
-          <div className="col-span-2 px-4 py-4 border-b text-center">
+          <div className="col-span-2 px-4 text-center">
             <Firebase size={32} className="mx-auto text-gray-500" />
-            <span className="text-sm text-gray-600">Firebase</span>
+            <span className="block mt-2 text-sm text-gray-600">Firebase</span>
           </div>
         </div>
         <div className="divide-dashed divide-y">
-          {FLOW.map((item, index) => (
-            <div className="grid grid-cols-7" key={index}>
-              <div className="py-10">
-                <h2>STEP {index + 1}</h2>
-                <p className="font-bold text-lg">{item.title}</p>
-              </div>
-              <Cell>{item.stripe}</Cell>
-              <Cell>{item.react}</Cell>
-              <Cell>{item.firebase}</Cell>
+          {STEPS.map((step, index) => (
+            <div className="grid grid-cols-7 gap-2 py-6" key={index}>
+              <h2>
+                <span className="text-gray-500 font-bold">
+                  STEP {index + 1}
+                </span>
+                <p className="font-bold text-gray-700 text-lg">{step}</p>
+              </h2>
+              <Cell>{buildDoc('stripe', index + 1)}</Cell>
+              <Cell>{buildDoc('nextjs', index + 1)}</Cell>
+              <Cell>{buildDoc('firebase', index + 1)}</Cell>
             </div>
           ))}
         </div>

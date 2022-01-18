@@ -1,0 +1,1 @@
+1. [価格一覧を表示する](https://github.com/stripe/stripe-firebase-extensions/blob/master/firestore-stripe-payments/POSTINSTALL.md#list-available-products-and-prices)

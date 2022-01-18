@@ -1,14 +1,16 @@
 /* This example requires Tailwind CSS v2.0+ */
-import { FC, Fragment } from 'react';
-import { Disclosure, Menu, Transition } from '@headlessui/react';
+import { Disclosure } from '@headlessui/react';
 import { BellIcon, MenuIcon, XIcon } from '@heroicons/react/outline';
-import { classNames } from '../lib/class-names';
+import { PlayIcon } from '@heroicons/react/solid';
+import { Github, Stripe, Twitter } from '@icons-pack/react-simple-icons';
 import { useRouter } from 'next/router';
-import { Github, Stripe } from '@icons-pack/react-simple-icons';
+import { FC } from 'react';
+import { classNames } from '../lib/class-names';
+import ThemeSwitch from './theme-switch';
 
 const navigation = [
   { name: '支払い', href: '/payments' },
-  { name: '月額課金', href: '/subscriptions' },
+  { name: '継続課金', href: '/subscriptions' },
   { name: 'CtoC', href: '/connect' },
   { name: 'カスタマーポータル', href: '/customer-portal' },
 ];
@@ -27,7 +29,7 @@ const Layout: FC = ({ children }) => {
 
   return (
     <div className="min-h-full">
-      <Disclosure as="nav" className="bg-indigo-600">
+      <Disclosure as="nav" className="bg-indigo-600 dark:bg-slate-800">
         {({ open }) => (
           <>
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -58,15 +60,15 @@ const Layout: FC = ({ children }) => {
                   </div>
                 </div>
                 <div className="hidden md:block">
-                  <div className="ml-4 flex items-center md:ml-6">
-                    {/* Profile dropdown */}
-                    <Menu as="div" className="ml-3 relative">
-                      <div>
-                        <a href="" target="_blank" rel="">
-                          <Github className="text-indigo-200" />
-                        </a>
-                      </div>
-                    </Menu>
+                  <div className="ml-4 flex space-x-4 items-center md:ml-6">
+                    <ThemeSwitch />
+                    <a
+                      href="https://github.com/flock-team/stripe-doc"
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      <Github className="text-indigo-200" />
+                    </a>
                   </div>
                 </div>
                 <div className="-mr-2 flex md:hidden">
@@ -145,30 +147,50 @@ const Layout: FC = ({ children }) => {
         )}
       </Disclosure>
 
-      <header className="bg-white shadow-sm">
-        <div className="max-w-7xl mx-auto py-4 px-4 sm:px-6 lg:px-8">
-          <h1 className="text-lg leading-6 font-semibold text-gray-900 mb-2">
-            支払い
-          </h1>
-          <p className="text-gray-500">
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Est
-            accusantium fugiat distinctio, deleniti veritatis expedita nulla
-            veniam sed aspernatur quam nisi! Commodi accusantium consequatur
-            quod tempora quis aliquid a ducimus!
-          </p>
+      <header className="bg-gray-50 shadow-sm">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="py-10 flex items-center">
+            <a
+              href=""
+              target="_blank"
+              className="aspect-video bg-slate-800 flex items-center justify-center rounded-lg w-96 mr-10 shadow-lg hover:shadow-xl transition-shadow"
+            >
+              <PlayIcon className="w-20 h-20 text-gray-300 opacity-40" />
+            </a>
+            <div className="flex-1">
+              <h1 className="text-lg leading-6 font-semibold text-gray-900 mb-2">
+                支払い
+              </h1>
+              <p className="text-gray-500">
+                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Est
+                accusantium fugiat distinctio, deleniti veritatis expedita nulla
+                veniam sed aspernatur quam nisi! Commodi accusantium consequatur
+                quod tempora quis aliquid a ducimus!
+              </p>
+            </div>
+          </div>
         </div>
       </header>
 
       <main>
-        <div className="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
-          {/* Replace with your content */}
-          <div className="px-4 py-4 sm:px-0">{children}</div>
-          {/* /End replace */}
+        <div className="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
+          {children}
         </div>
       </main>
 
       <footer className="bg-white">
         <div className="max-w-7xl mx-auto py-12 px-4 sm:px-6 md:flex md:items-center md:justify-between lg:px-8">
+          <div className="flex justify-center space-x-6 md:order-2">
+            <a
+              href="https://twitter.com/d151005"
+              target="_blank"
+              rel="noreferrer"
+              className="text-gray-400 hover:text-gray-500"
+            >
+              <span className="sr-only">Twitter</span>
+              <Twitter className="h-6 w-6" aria-hidden="true" />
+            </a>
+          </div>
           <div className="mt-8 md:mt-0 md:order-1">
             <p className="text-center text-base text-gray-400">
               &copy; 2022 nino.
