@@ -14,7 +14,7 @@ const Home: NextPage = () => {
 
       <TutorialKit
         videoURL="https://xxx"
-        type="payments"
+        type="subscriptions"
         patterns={[
           {
             title: 'Firebase拡張機能',
@@ -28,23 +28,23 @@ const Home: NextPage = () => {
             tools: ['stripe', 'nextjs', 'firebase'],
           },
         ]}
-        title="商品の販売"
+        title="サブスクリプション"
         description={
           <p>
-            Amazonのようなショッピングサイトは
-            <ExternalLink href="https://stripe.com/jp/payments">
-              Stripe Payments
+            Netflixのような継続支払いサービスは
+            <ExternalLink href="https://stripe.com/jp/billing">
+              Stripe Billing
             </ExternalLink>
             で実現できます。
           </p>
         }
         scenes={[
-          'ショッピングサイト',
-          '有料コンテンツの販売',
-          'グッズ販売',
-          'チケット販売',
+          'オンラインサロン',
+          'eラーニング',
+          'ファンクラブ',
+          'メールマガジン購読',
+          'SaaS',
           '有料機能のアンロック',
-          '投げ銭',
         ]}
       />
     </div>

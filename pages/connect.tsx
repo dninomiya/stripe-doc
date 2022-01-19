@@ -14,7 +14,7 @@ const Home: NextPage = () => {
 
       <TutorialKit
         videoURL="https://xxx"
-        type="payments"
+        type="subscriptions"
         patterns={[
           {
             title: 'Firebase拡張機能',
@@ -28,12 +28,12 @@ const Home: NextPage = () => {
             tools: ['stripe', 'nextjs', 'firebase'],
           },
         ]}
-        title="商品の販売"
+        title="マーケットプレイス"
         description={
           <p>
-            Amazonのようなショッピングサイトは
-            <ExternalLink href="https://stripe.com/jp/payments">
-              Stripe Payments
+            メルカリのようなユーザー間の売買サービスは
+            <ExternalLink href="https://stripe.com/jp/connect">
+              Stripe Connect
             </ExternalLink>
             で実現できます。
           </p>

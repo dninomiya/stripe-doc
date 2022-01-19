@@ -25,14 +25,22 @@ type Pattern = {
 };
 
 type Props = {
-  type: 'payments' | 'subscription' | 'connect';
+  type: 'payments' | 'subscriptions' | 'connect';
   title: string;
   description: ReactNode;
   scenes: string[];
   patterns: Pattern[];
+  videoURL: string;
 };
 
-const TutorialKit = ({ title, description, patterns, scenes, type }: Props) => {
+const TutorialKit = ({
+  title,
+  description,
+  patterns,
+  scenes,
+  type,
+  videoURL,
+}: Props) => {
   const [pattern, setPattern] = useState<Pattern>(patterns[0]);
 
   return (
@@ -46,11 +54,12 @@ const TutorialKit = ({ title, description, patterns, scenes, type }: Props) => {
       <div>
         <div className="bg-gray-50 shadow-sm">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="py-10 flex items-center">
+            <div className="py-10 lg:flex items-center">
               <a
-                href=""
+                href={videoURL}
                 target="_blank"
-                className="aspect-video bg-slate-800 flex items-center justify-center rounded-lg w-96 mr-10 shadow-lg hover:shadow-xl transition-shadow"
+                className="aspect-video bg-slate-800 flex items-center justify-center rounded-lg lg:w-96 lg:mr-10 mb-6 lg:mb-0 shadow-lg hover:shadow-xl transition-shadow"
+                rel="noreferrer"
               >
                 <PlayIcon className="w-20 h-20 text-gray-300 opacity-40" />
               </a>

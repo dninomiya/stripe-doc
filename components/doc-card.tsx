@@ -2,7 +2,7 @@ import { FlagIcon, PencilIcon } from '@heroicons/react/outline';
 import MarkdownRender from './markdown-render';
 
 type Props = {
-  type: 'payments' | 'subscription' | 'connect';
+  type: 'payments' | 'subscriptions' | 'connect';
   tool: string;
   index: number;
 };

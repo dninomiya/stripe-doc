@@ -1,7 +1,7 @@
-/* This example requires Tailwind CSS v2.0+ */
 import { Disclosure } from '@headlessui/react';
 import { BellIcon, MenuIcon, XIcon } from '@heroicons/react/outline';
 import { Github, Stripe, Twitter } from '@icons-pack/react-simple-icons';
+import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { FC } from 'react';
 import { classNames } from '../lib/class-names';
@@ -10,13 +10,17 @@ import ThemeSwitch from './theme-switch';
 const navigation = [
   { name: '商品の販売', href: '/payments' },
   { name: 'サブスクリプション', href: '/subscriptions' },
-  { name: 'ユーザー間売買', href: '/connect' },
+  { name: 'マーケットプレイス', href: '/connect' },
 ];
-const userNavigation = [
-  { name: 'Your Profile', href: '#' },
-  { name: 'Settings', href: '#' },
-  { name: 'Sign out', href: '#' },
-];
+
+const MyLink = (props: any) => {
+  let { href, children, ...rest } = props;
+  return (
+    <Link href={href}>
+      <a {...rest}>{children}</a>
+    </Link>
+  );
+};
 
 const Layout: FC = ({ children }) => {
   const router = useRouter();
@@ -40,19 +44,19 @@ const Layout: FC = ({ children }) => {
                   <div className="hidden md:block">
                     <div className="ml-10 flex items-baseline space-x-4">
                       {navigation.map((item) => (
-                        <a
-                          key={item.name}
-                          href={item.href}
-                          className={classNames(
-                            isCurrent(item)
-                              ? 'bg-indigo-700 text-white'
-                              : 'text-white hover:bg-indigo-500 hover:bg-opacity-75',
-                            'px-3 py-2 rounded-md text-sm font-medium'
-                          )}
-                          aria-current={isCurrent(item) ? 'page' : undefined}
-                        >
-                          {item.name}
-                        </a>
+                        <Link key={item.name} href={item.href}>
+                          <a
+                            className={classNames(
+                              isCurrent(item)
+                                ? 'bg-indigo-700 text-white'
+                                : 'text-white hover:bg-indigo-500 hover:bg-opacity-75',
+                              'px-3 py-2 rounded-md text-sm font-medium'
+                            )}
+                            aria-current={isCurrent(item) ? 'page' : undefined}
+                          >
+                            {item.name}
+                          </a>
+                        </Link>
                       ))}
                     </div>
                   </div>
@@ -88,7 +92,7 @@ const Layout: FC = ({ children }) => {
                 {navigation.map((item) => (
                   <Disclosure.Button
                     key={item.name}
-                    as="a"
+                    as={MyLink}
                     href={item.href}
                     className={classNames(
                       isCurrent(item)
@@ -101,44 +105,6 @@ const Layout: FC = ({ children }) => {
                     {item.name}
                   </Disclosure.Button>
                 ))}
-              </div>
-              <div className="pt-4 pb-3 border-t border-indigo-700">
-                <div className="flex items-center px-5">
-                  {/* <div className="flex-shrink-0">
-                      <img
-                        className="h-10 w-10 rounded-full"
-                        src={user.imageUrl}
-                        alt=""
-                      />
-                    </div>
-                    <div className="ml-3">
-                      <div className="text-base font-medium text-white">
-                        {user.name}
-                      </div>
-                      <div className="text-sm font-medium text-indigo-300">
-                        {user.email}
-                      </div>
-                    </div> */}
-                  <button
-                    type="button"
-                    className="ml-auto bg-indigo-600 flex-shrink-0 p-1 rounded-full text-indigo-200 hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-indigo-600 focus:ring-white"
-                  >
-                    <span className="sr-only">View notifications</span>
-                    <BellIcon className="h-6 w-6" aria-hidden="true" />
-                  </button>
-                </div>
-                <div className="mt-3 px-2 space-y-1">
-                  {userNavigation.map((item) => (
-                    <Disclosure.Button
-                      key={item.name}
-                      as="a"
-                      href={item.href}
-                      className="block px-3 py-2 rounded-md text-base font-medium text-white hover:bg-indigo-500 hover:bg-opacity-75"
-                    >
-                      {item.name}
-                    </Disclosure.Button>
-                  ))}
-                </div>
               </div>
             </Disclosure.Panel>
           </>
