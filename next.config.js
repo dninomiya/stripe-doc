@@ -10,6 +10,15 @@ const nextConfig = {
     });
     return config;
   },
+  async redirects() {
+    return [
+      {
+        source: '/',
+        destination: '/payments',
+        permanent: true,
+      },
+    ];
+  },
 };
 
 module.exports = nextConfig;
