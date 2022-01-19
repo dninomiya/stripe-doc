@@ -12,7 +12,7 @@ function MyApp({ Component, pageProps }: AppProps) {
         <link
           rel="icon"
           href={`${
-            process.env.GITHUB_ACTIONS ? '/stripe-doc' : ''
+            process.env.NODE_ENV === 'production' ? '/stripe-doc' : ''
           }/favicon.ico`}
         />
       </Head>
