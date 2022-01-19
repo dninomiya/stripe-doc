@@ -1,0 +1,1 @@
+1. [カスタマーポータルを開く](https://github.com/stripe/stripe-firebase-extensions/blob/master/firestore-stripe-payments/POSTINSTALL.md#redirect-to-the-customer-portal)

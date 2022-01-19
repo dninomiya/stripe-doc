@@ -1,50 +1,7 @@
-import { FlagIcon, PencilIcon } from '@heroicons/react/outline';
-import { Firebase, Nextdotjs, Stripe } from '@icons-pack/react-simple-icons';
 import type { NextPage } from 'next';
 import Head from 'next/head';
-import { FC } from 'react';
-import Doc from '../components/doc';
-
-const STEPS = ['環境構築', '商品の作成と表示', '商品の購入'];
-
-const Cell: FC = ({ children }) => {
-  return <div className="col-span-2">{children}</div>;
-};
-
-const buildDoc = (category: string, index: number) => {
-  try {
-    const doc = require(`../docs/${category}-${index}.md`)?.default;
-    return (
-      <div className="group hover:shadow transition-shadow rounded-md p-4">
-        <Doc>{doc}</Doc>
-        <div className="items-center space-x-4 justify-end group-hover:visible flex invisible mt-4 text-gray-400 text-sm">
-          <a
-            href={encodeURI(
-              `https://github.com/flock-team/stripe-doc/issues/new?body=該当ドキュメント\nhttps://github.com/flock-team/stripe-doc/blob/main/docs/${category}-${index}.md\n\n報告内容\n&title=ドキュメント報告: ${category}-${index}`
-            )}
-            target="_blank"
-            className="flex items-center space-x-2 hover:text-gray-700"
-            rel="noreferrer"
-          >
-            <FlagIcon className="w-4 h-4 inline" />
-            <span>報告</span>
-          </a>
-          <a
-            href={`https://github.com/flock-team/stripe-doc/edit/main/docs/${category}-${index}.md`}
-            target="_blank"
-            className="flex items-center space-x-2 hover:text-gray-700"
-            rel="noreferrer"
-          >
-            <PencilIcon className="w-4 h-4 inline" />
-            <span>編集</span>
-          </a>
-        </div>
-      </div>
-    );
-  } catch (err) {
-    return null;
-  }
-};
+import TutorialKit from '../components/tutorial-kit';
+import ExternalLink from '../components/external-link';
 
 const Home: NextPage = () => {
   return (
@@ -55,38 +12,40 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <div className="mb-20">
-        <div className="grid grid-cols-7 gap-2 sticky top-0 py-4 border-b bg-white">
-          <div></div>
-          <div className="col-span-2 px-4 text-center">
-            <Stripe size={32} className="mx-auto text-gray-500" />
-            <span className="block mt-2 text-sm text-gray-600">Stripe</span>
-          </div>
-          <div className="col-span-2 px-4 text-center">
-            <Nextdotjs size={32} className="mx-auto text-gray-500" />
-            <span className="block mt-2 text-sm text-gray-600">Next.js</span>
-          </div>
-          <div className="col-span-2 px-4 text-center">
-            <Firebase size={32} className="mx-auto text-gray-500" />
-            <span className="block mt-2 text-sm text-gray-600">Firebase</span>
-          </div>
-        </div>
-        <div className="divide-dashed divide-y">
-          {STEPS.map((step, index) => (
-            <div className="grid grid-cols-7 gap-2 py-6" key={index}>
-              <h2>
-                <span className="text-gray-500 font-bold">
-                  STEP {index + 1}
-                </span>
-                <p className="font-bold text-gray-700 text-lg">{step}</p>
-              </h2>
-              <Cell>{buildDoc('stripe', index + 1)}</Cell>
-              <Cell>{buildDoc('nextjs', index + 1)}</Cell>
-              <Cell>{buildDoc('firebase', index + 1)}</Cell>
-            </div>
-          ))}
-        </div>
-      </div>
+      <TutorialKit
+        type="payments"
+        patterns={[
+          {
+            title: 'Firebase拡張機能',
+            steps: [
+              '環境構築',
+              '商品の作成と表示',
+              'フルフィルメントの実装',
+              '商品の購入',
+              '決済情報の管理',
+            ],
+            tools: ['stripe', 'nextjs', 'firebase'],
+          },
+        ]}
+        title="商品の販売"
+        description={
+          <p>
+            Amazonのようなショッピングサイトは
+            <ExternalLink href="https://stripe.com/jp/payments">
+              Stripe Payments
+            </ExternalLink>
+            で実現できます。
+          </p>
+        }
+        scenes={[
+          'ショッピングサイト',
+          '有料コンテンツの販売',
+          'グッズ販売',
+          'チケット販売',
+          '有料機能のアンロック',
+          '投げ銭',
+        ]}
+      />
     </div>
   );
 };

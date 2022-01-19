@@ -1,7 +1,6 @@
 /* This example requires Tailwind CSS v2.0+ */
 import { Disclosure } from '@headlessui/react';
 import { BellIcon, MenuIcon, XIcon } from '@heroicons/react/outline';
-import { PlayIcon } from '@heroicons/react/solid';
 import { Github, Stripe, Twitter } from '@icons-pack/react-simple-icons';
 import { useRouter } from 'next/router';
 import { FC } from 'react';
@@ -9,10 +8,9 @@ import { classNames } from '../lib/class-names';
 import ThemeSwitch from './theme-switch';
 
 const navigation = [
-  { name: '支払い', href: '/payments' },
-  { name: '継続課金', href: '/subscriptions' },
-  { name: 'CtoC', href: '/connect' },
-  { name: 'カスタマーポータル', href: '/customer-portal' },
+  { name: '商品の販売', href: '/payments' },
+  { name: 'サブスクリプション', href: '/subscriptions' },
+  { name: 'ユーザー間売買', href: '/connect' },
 ];
 const userNavigation = [
   { name: 'Your Profile', href: '#' },
@@ -147,36 +145,7 @@ const Layout: FC = ({ children }) => {
         )}
       </Disclosure>
 
-      <header className="bg-gray-50 shadow-sm">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="py-10 flex items-center">
-            <a
-              href=""
-              target="_blank"
-              className="aspect-video bg-slate-800 flex items-center justify-center rounded-lg w-96 mr-10 shadow-lg hover:shadow-xl transition-shadow"
-            >
-              <PlayIcon className="w-20 h-20 text-gray-300 opacity-40" />
-            </a>
-            <div className="flex-1">
-              <h1 className="text-lg leading-6 font-semibold text-gray-900 mb-2">
-                支払い
-              </h1>
-              <p className="text-gray-500">
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Est
-                accusantium fugiat distinctio, deleniti veritatis expedita nulla
-                veniam sed aspernatur quam nisi! Commodi accusantium consequatur
-                quod tempora quis aliquid a ducimus!
-              </p>
-            </div>
-          </div>
-        </div>
-      </header>
-
-      <main>
-        <div className="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-          {children}
-        </div>
-      </main>
+      <main>{children}</main>
 
       <footer className="bg-white">
         <div className="max-w-7xl mx-auto py-12 px-4 sm:px-6 md:flex md:items-center md:justify-between lg:px-8">

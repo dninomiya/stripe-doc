@@ -1,34 +1,25 @@
+import { ClipboardIcon } from '@heroicons/react/outline';
 import { FC } from 'react';
-import { synthwave84 } from 'react-syntax-highlighter/dist/cjs/styles/prism';
-import ReactMarkdown from 'react-markdown';
-import { PrismLight as SyntaxHighlighter } from 'react-syntax-highlighter';
-import remarkBreaks from 'remark-breaks';
-import { ClipboardIcon, ExternalLinkIcon } from '@heroicons/react/outline';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 import toast from 'react-hot-toast';
+import ReactMarkdown from 'react-markdown';
+import { PrismLight as SyntaxHighlighter } from 'react-syntax-highlighter';
+import { synthwave84 } from 'react-syntax-highlighter/dist/cjs/styles/prism';
+import remarkBreaks from 'remark-breaks';
+import ExternalLink from './external-link';
 
-const Doc: FC = ({ children }) => {
+type Props = {
+  data: string;
+};
+
+const MarkdownRender = ({ data }: Props) => {
   return (
     <ReactMarkdown
       remarkPlugins={[remarkBreaks]}
       className="prose prose-sm prose-pre:p-0"
       components={{
         a({ href, children }) {
-          const isExternal = href?.match('^http');
-
-          return (
-            <a
-              href={href}
-              rel="noreferrer"
-              className="text-indigo-600"
-              target={isExternal ? '_blank' : '_self'}
-            >
-              <span>{children}</span>
-              {isExternal && (
-                <ExternalLinkIcon className="inline-block w-4 h-4 text-indigo-400 align-top ml-1" />
-              )}
-            </a>
-          );
+          return <ExternalLink href={href!}>{children}</ExternalLink>;
         },
         pre({ children }) {
           return (
@@ -75,9 +66,9 @@ const Doc: FC = ({ children }) => {
         },
       }}
     >
-      {children as string}
+      {data}
     </ReactMarkdown>
   );
 };
 
-export default Doc;
+export default MarkdownRender;
