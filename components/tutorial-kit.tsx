@@ -1,3 +1,4 @@
+import { CheckCircleIcon } from '@heroicons/react/outline';
 import { PlayIcon } from '@heroicons/react/solid';
 import {
   Firebase,
@@ -6,8 +7,11 @@ import {
   Stripe,
 } from '@icons-pack/react-simple-icons';
 import Head from 'next/head';
-import { ReactNode, useState } from 'react';
-import DocCard from './doc-card';
+import { ReactNode, useEffect, useState } from 'react';
+import { Doc, DocType, DOC_TREE, TOOLS } from '../docs/doc-tree';
+import { classNames } from '../lib/class-names';
+import { getCompleteDocs } from '../lib/doc-storage';
+import DocModal from './doc-modal';
 
 const ToolTab = ({ title, TabIcon }: { title: string; TabIcon: Icon }) => {
   return (
@@ -25,7 +29,7 @@ type Pattern = {
 };
 
 type Props = {
-  type: 'payments' | 'subscriptions' | 'connect';
+  type: DocType;
   title: string;
   description: ReactNode;
   scenes: string[];
@@ -33,15 +37,14 @@ type Props = {
   videoURL: string;
 };
 
-const TutorialKit = ({
-  title,
-  description,
-  patterns,
-  scenes,
-  type,
-  videoURL,
-}: Props) => {
-  const [pattern, setPattern] = useState<Pattern>(patterns[0]);
+const TutorialKit = ({ title, description, scenes, type, videoURL }: Props) => {
+  const [target, setTarget] = useState<Doc | null>(null);
+  const [isOpen, setIsOpen] = useState<boolean>(false);
+  const [completeDocs, setCompleteDocs] = useState<string[]>();
+
+  useEffect(() => {
+    setCompleteDocs(getCompleteDocs());
+  }, []);
 
   return (
     <div>
@@ -85,17 +88,50 @@ const TutorialKit = ({
               <ToolTab TabIcon={Firebase} title="Firebase" />
             </div>
             <div className="divide-dashed divide-y">
-              {pattern.steps.map((step, index) => (
-                <div className="grid grid-cols-7 gap-2 py-6" key={index}>
+              {DOC_TREE.payments.map((step, stepIndex) => (
+                <div className="grid grid-cols-7 gap-2 py-6" key={stepIndex}>
                   <h2>
                     <span className="text-gray-500 font-bold">
-                      STEP {index + 1}
+                      STEP {stepIndex + 1}
                     </span>
-                    <p className="font-bold text-gray-700 text-lg">{step}</p>
+                    <p className="font-bold text-gray-700 text-lg">
+                      {step.title}
+                    </p>
                   </h2>
-                  {pattern.tools.map((tool) => (
-                    <div key={tool} className="col-span-2">
-                      <DocCard type={type} tool={tool} index={index + 1} />
+                  {TOOLS.map((tool) => (
+                    <div key={tool} className="col-span-2 space-y-2">
+                      {step.tool[tool]?.map((item, id: number) => {
+                        return (
+                          <button
+                            key={item.title}
+                            onClick={() => {
+                              setTarget({
+                                step: stepIndex,
+                                id,
+                                type,
+                                tool,
+                                title: item.title,
+                                videoURL: item.videoURL,
+                              });
+
+                              setIsOpen(true);
+                            }}
+                            className="flex items-center text-gray-600 hover:text-gray-800 text-left space-x-2 w-full"
+                          >
+                            <CheckCircleIcon
+                              className={classNames(
+                                'w-6 h-6',
+                                completeDocs?.includes(
+                                  `${type}-${tool}-${stepIndex}-${id}`
+                                )
+                                  ? 'text-lime-500'
+                                  : 'opacity-10'
+                              )}
+                            />
+                            <span className="text-sm">{item.title}</span>
+                          </button>
+                        );
+                      })}
                     </div>
                   ))}
                 </div>
@@ -104,6 +140,15 @@ const TutorialKit = ({
           </div>
         </div>
       </div>
+      <DocModal
+        isOpen={isOpen}
+        onClose={() => setIsOpen(false)}
+        onComplete={(newCompleteDocs) => {
+          setIsOpen(false);
+          setCompleteDocs(newCompleteDocs);
+        }}
+        doc={target}
+      />
     </div>
   );
 };
