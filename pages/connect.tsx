@@ -13,7 +13,7 @@ const Home: NextPage = () => {
 
       <TutorialKit
         videoURL="https://xxx"
-        type="subscriptions"
+        type="connect"
         patterns={[
           {
             title: 'Firebase拡張機能',
