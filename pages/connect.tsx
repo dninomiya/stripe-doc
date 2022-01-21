@@ -14,19 +14,6 @@ const Home: NextPage = () => {
       <TutorialKit
         videoURL="https://xxx"
         type="connect"
-        patterns={[
-          {
-            title: 'Firebase拡張機能',
-            steps: [
-              '環境構築',
-              '商品の作成と表示',
-              'フルフィルメントの実装',
-              '商品の購入',
-              '決済情報の管理',
-            ],
-            tools: ['stripe', 'nextjs', 'firebase'],
-          },
-        ]}
         title="マーケットプレイス"
         description={
           <p>

@@ -22,18 +22,11 @@ const ToolTab = ({ title, TabIcon }: { title: string; TabIcon: Icon }) => {
   );
 };
 
-type Pattern = {
-  title: string;
-  steps: string[];
-  tools: string[];
-};
-
 type Props = {
   type: DocType;
   title: string;
   description: ReactNode;
   scenes: string[];
-  patterns: Pattern[];
   videoURL: string;
 };
 
