@@ -9,7 +9,7 @@ import ThemeSwitch from './theme-switch';
 
 const navigation = [
   { name: '商品の販売', href: '/payments' },
-  { name: 'サブスクリプション', href: '/subscriptions' },
+  { name: 'サブスクリプション', href: '/billing' },
   { name: 'マーケットプレイス', href: '/connect' },
 ];
 

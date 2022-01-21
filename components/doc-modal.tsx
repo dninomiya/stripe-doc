@@ -27,6 +27,12 @@ export default function DocModal({ isOpen, onClose, doc, onComplete }: Props) {
     }
   };
 
+  const getGitHubDocPath = (doc: Doc, mode: 'blob' | 'edit') => {
+    return `https://github.com/flock-team/stripe-doc/${mode}/main/docs/${
+      doc.type
+    }/${doc.tool}/${doc.step + 1}-${doc.id + 1}.md`;
+  };
+
   return (
     <Transition.Root show={isOpen} as={Fragment}>
       <Dialog
@@ -118,8 +124,13 @@ export default function DocModal({ isOpen, onClose, doc, onComplete }: Props) {
                   <div className="items-center space-x-4 justify-end flex mt-4 text-gray-400 text-sm">
                     <a
                       href={encodeURI(
-                        `https://github.com/flock-team/stripe-doc/issues/new?body=該当ドキュメント\nhttps://github.com/flock-team/stripe-doc/blob/main/docs/${doc.type}/${doc.tool}/${doc.step}-${doc.id}.md\n\n報告内容\n&title=ドキュメント報告: ${doc.type}-${doc.tool}-${doc.step}-${doc.id}`
-                      )}
+                        `https://github.com/flock-team/stripe-doc/issues/new?body=## 該当ドキュメント\n${getGitHubDocPath(
+                          doc,
+                          'blob'
+                        )}\n\n## 報告内容\n&title=ドキュメント報告: ${
+                          doc.type
+                        }-${doc.tool}-${doc.step + 1}-${doc.id + 1}`
+                      ).replace(/#/g, '%23')}
                       target="_blank"
                       className="flex items-center space-x-2 hover:text-gray-700"
                       rel="noreferrer"
@@ -128,7 +139,7 @@ export default function DocModal({ isOpen, onClose, doc, onComplete }: Props) {
                       <span>報告</span>
                     </a>
                     <a
-                      href={`https://github.com/flock-team/stripe-doc/edit/main/docs/${doc.type}/${doc.tool}/${doc.step}-${doc.id}.md`}
+                      href={getGitHubDocPath(doc, 'edit')}
                       target="_blank"
                       className="flex items-center space-x-2 hover:text-gray-700"
                       rel="noreferrer"
