@@ -7,6 +7,7 @@ import {
   Stripe,
 } from '@icons-pack/react-simple-icons';
 import Head from 'next/head';
+import { Router, useRouter } from 'next/router';
 import { ReactNode, useEffect, useState } from 'react';
 import { DocId, getDocTitle } from '../docs/doc-titles';
 import { DocType, DOC_TREE, TOOLS } from '../docs/doc-tree';
@@ -32,9 +33,22 @@ type Props = {
 };
 
 const TutorialKit = ({ title, description, scenes, type, videoURL }: Props) => {
-  const [target, setTarget] = useState<DocId | null>(null);
-  const [isOpen, setIsOpen] = useState<boolean>(false);
   const [completeDocs, setCompleteDocs] = useState<string[]>();
+  const router = useRouter();
+
+  const docId = router.query.id as DocId;
+
+  const changeRoute = (id?: string) => {
+    router.push(
+      {
+        query: id ? { id } : null,
+      },
+      undefined,
+      {
+        shallow: true,
+      }
+    );
+  };
 
   useEffect(() => {
     setCompleteDocs(getCompleteDocs());
@@ -97,11 +111,8 @@ const TutorialKit = ({ title, description, scenes, type, videoURL }: Props) => {
                       {step.tool[tool]?.map((id) => {
                         return (
                           <button
-                            key={title}
-                            onClick={() => {
-                              setTarget(id);
-                              setIsOpen(true);
-                            }}
+                            key={id}
+                            onClick={() => changeRoute(id)}
                             className="flex items-center text-gray-600 hover:text-gray-800 text-left space-x-2 w-full"
                           >
                             <CheckCircleIcon
@@ -125,13 +136,13 @@ const TutorialKit = ({ title, description, scenes, type, videoURL }: Props) => {
         </div>
       </div>
       <DocModal
-        isOpen={isOpen}
-        onClose={() => setIsOpen(false)}
+        isOpen={Boolean(docId)}
+        onClose={() => changeRoute()}
         onComplete={(newCompleteDocs) => {
-          setIsOpen(false);
+          changeRoute();
           setCompleteDocs(newCompleteDocs);
         }}
-        id={target}
+        id={docId}
       />
     </div>
   );

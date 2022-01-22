@@ -1,7 +1,7 @@
 import { FlagIcon, PencilIcon } from '@heroicons/react/outline';
 import { PlayIcon } from '@heroicons/react/solid';
 import { Dialog, Transition } from '@headlessui/react';
-import { Fragment, useRef } from 'react';
+import { Fragment, useEffect, useMemo, useRef, useState } from 'react';
 import toast from 'react-hot-toast';
 import {
   isComplete,
@@ -19,7 +19,14 @@ type Props = {
 };
 
 export default function DocModal({ isOpen, onClose, id, onComplete }: Props) {
+  const [docId, setDocId] = useState<DocId>();
   const completeButtonRef = useRef(null);
+
+  useEffect(() => {
+    if (id) {
+      setDocId(id);
+    }
+  }, [id]);
 
   const complete = () => {
     if (id) {
@@ -70,16 +77,16 @@ export default function DocModal({ isOpen, onClose, id, onComplete }: Props) {
           >
             &#8203;
           </span>
-          <Transition.Child
-            as={Fragment}
-            enter="ease-out duration-300"
-            enterFrom="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
-            enterTo="opacity-100 translate-y-0 sm:scale-100"
-            leave="ease-in duration-200"
-            leaveFrom="opacity-100 translate-y-0 sm:scale-100"
-            leaveTo="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
-          >
-            {id && (
+          {docId && (
+            <Transition.Child
+              as={Fragment}
+              enter="ease-out duration-300"
+              enterFrom="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
+              enterTo="opacity-100 translate-y-0 sm:scale-100"
+              leave="ease-in duration-200"
+              leaveFrom="opacity-100 translate-y-0 sm:scale-100"
+              leaveTo="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
+            >
               <div className="inline-block align-bottom bg-white rounded-lg px-4 pt-5 pb-4 text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full sm:p-6">
                 <div>
                   <a
@@ -95,15 +102,15 @@ export default function DocModal({ isOpen, onClose, id, onComplete }: Props) {
                       as="h3"
                       className="text-lg text-center leading-6 font-medium text-gray-900"
                     >
-                      {getDocTitle(id)}
+                      {getDocTitle(docId)}
                     </Dialog.Title>
                     <div className="mt-4">
-                      <DocCard id={id} />
+                      <DocCard id={docId} />
                     </div>
                   </div>
                 </div>
                 <div className="mt-5 sm:mt-6 sm:grid sm:grid-cols-2 sm:gap-3 sm:grid-flow-row-dense">
-                  {isComplete(id) ? (
+                  {isComplete(docId) ? (
                     <button
                       type="button"
                       className="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-gray-600 text-base font-medium text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500 sm:col-start-2 sm:text-sm"
@@ -136,7 +143,7 @@ export default function DocModal({ isOpen, onClose, id, onComplete }: Props) {
                     <a
                       href={encodeURI(
                         `https://github.com/flock-team/stripe-doc/issues/new?body=## 該当ドキュメント\n${getGitHubDocPath(
-                          id,
+                          docId,
                           'blob'
                         )}\n\n## 報告内容\n&title=ドキュメント報告: ${id}`
                       ).replace(/#/g, '%23')}
@@ -148,7 +155,7 @@ export default function DocModal({ isOpen, onClose, id, onComplete }: Props) {
                       <span>報告</span>
                     </a>
                     <a
-                      href={getGitHubDocPath(id, 'edit')}
+                      href={getGitHubDocPath(docId, 'edit')}
                       target="_blank"
                       className="flex items-center space-x-2 hover:text-gray-700"
                       rel="noreferrer"
@@ -159,8 +166,8 @@ export default function DocModal({ isOpen, onClose, id, onComplete }: Props) {
                   </div>
                 </div>
               </div>
-            )}
-          </Transition.Child>
+            </Transition.Child>
+          )}
         </div>
       </Dialog>
     </Transition.Root>
