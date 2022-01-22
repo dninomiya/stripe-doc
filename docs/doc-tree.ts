@@ -3,13 +3,6 @@ import { DocId } from './doc-titles';
 export const TOOLS = ['stripe', 'nextjs', 'firebase'] as const;
 export const DOC_TYPES = ['payments', 'billing', 'connect'] as const;
 export type DocType = typeof DOC_TYPES[number];
-export type Doc = {
-  title: string;
-  tool: string;
-  step: number;
-  id: number;
-  type: DocType;
-};
 
 export const DOC_TREE: {
   [key in typeof DOC_TYPES[number]]: {
@@ -47,13 +40,14 @@ export const DOC_TREE: {
       },
     },
     {
-      title: 'フルフィルメントの実装',
+      title: '商品の購入',
       tool: {
+        nextjs: ['nextjs-checkout-payments'],
         firebase: ['firebase-install-stripe', 'firebase-event-handler'],
       },
     },
     {
-      title: '商品の購入',
+      title: '支払い方法の管理',
       tool: {
         stripe: ['stripe-customer-portal-customize'],
         nextjs: ['nextjs-customer-portal-open'],

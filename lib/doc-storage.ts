@@ -11,3 +11,15 @@ export const setComplteDoc = (id: DocId) => {
   localStorage.setItem('complete', newCompleteDocs.join(','));
   return newCompleteDocs;
 };
+
+export const isComplete = (id: DocId) => {
+  const docs = getCompleteDocs();
+  return docs.includes(id);
+};
+
+export const removeCompleteDoc = (id: DocId) => {
+  const docs = getCompleteDocs();
+  const newCompleteDocs = docs.filter((docId) => docId !== id);
+  localStorage.setItem('complete', newCompleteDocs.join(','));
+  return newCompleteDocs;
+};

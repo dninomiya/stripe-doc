@@ -9,7 +9,7 @@ import {
 import Head from 'next/head';
 import { ReactNode, useEffect, useState } from 'react';
 import { DocId, getDocTitle } from '../docs/doc-titles';
-import { Doc, DocType, DOC_TREE, TOOLS } from '../docs/doc-tree';
+import { DocType, DOC_TREE, TOOLS } from '../docs/doc-tree';
 import { classNames } from '../lib/class-names';
 import { getCompleteDocs } from '../lib/doc-storage';
 import DocModal from './doc-modal';

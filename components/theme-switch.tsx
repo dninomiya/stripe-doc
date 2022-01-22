@@ -42,7 +42,7 @@ const ThemeSwitch = () => {
       </Switch>
       <Switch.Label as="span" className="ml-2 text-gray-300">
         {theme === 'dark' ? (
-          <MoonSolidIcon className="w-6 h-6" />
+          <MoonSolidIcon className="w-6 h-6 text-yellow-300" />
         ) : (
           <MoonIcon className="w-6 h-6" />
         )}

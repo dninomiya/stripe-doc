@@ -17,7 +17,7 @@ const MarkdownRender = ({ data }: Props) => {
   return (
     <ReactMarkdown
       remarkPlugins={[remarkBreaks, remarkGfm]}
-      className="prose prose-sm prose-pre:p-0"
+      className="prose prose-pre:p-0"
       transformImageUri={(src) => {
         if (process.env.NODE_ENV === 'production') {
           return `/stripe-doc` + src;
@@ -53,7 +53,7 @@ const MarkdownRender = ({ data }: Props) => {
           return !inline && match ? (
             <div>
               {fileName && (
-                <div className="bg-[#1f192c] border-b flex items-center justify-between border-black text-sm py-1 px-2 text-white">
+                <div className="bg-[#1f192c] border-b flex items-center justify-between border-black text-sm py-2 px-3 text-white">
                   <span className="opacity-60">{fileName}</span>
                   <CopyToClipboard
                     onCopy={() =>
@@ -64,7 +64,7 @@ const MarkdownRender = ({ data }: Props) => {
                     text={String(children)}
                   >
                     <button>
-                      <ClipboardIcon className="w-4 h-4 text-gray-500" />
+                      <ClipboardIcon className="w-6 h-6 text-gray-500" />
                     </button>
                   </CopyToClipboard>
                 </div>

@@ -19,6 +19,7 @@ export const DOC_TITLES = {
   'firebase-event-handler': 'イベントハンドラ（HTTPリクエスト関数の作成）',
   'stripe-customer-portal-customize': 'カスタマーポータルのカスタマイズ',
   'nextjs-customer-portal-open': 'カスタマーポータルを開く',
+  'nextjs-checkout-payments': '支払いを開始する',
 };
 
 export type DocId = keyof typeof DOC_TITLES;

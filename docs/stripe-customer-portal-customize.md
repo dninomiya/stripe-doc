@@ -1,0 +1,1 @@
+[カスタマーポータルをカスタマイズ](https://stripe.com/docs/billing/subscriptions/integrating-customer-portal)することができます。
