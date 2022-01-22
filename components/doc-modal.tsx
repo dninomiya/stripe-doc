@@ -21,6 +21,7 @@ type Props = {
 export default function DocModal({ isOpen, onClose, id, onComplete }: Props) {
   const [docId, setDocId] = useState<DocId>();
   const completeButtonRef = useRef(null);
+  const [videoExists, setVideoExists] = useState<boolean>(false);
 
   useEffect(() => {
     if (id) {
@@ -89,14 +90,27 @@ export default function DocModal({ isOpen, onClose, id, onComplete }: Props) {
             >
               <div className="inline-block align-bottom bg-white rounded-lg px-4 pt-5 pb-4 text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full sm:p-6">
                 <div>
-                  <a
-                    href={''}
-                    target="_blank"
-                    className="aspect-video bg-slate-800 flex items-center justify-center rounded-lg mb-6 shadow-lg hover:shadow-xl transition-shadow"
-                    rel="noreferrer"
+                  <video
+                    loop
+                    autoPlay
+                    hidden={!videoExists}
+                    controlsList="nodownload"
+                    controls
+                    onLoadedData={() => setVideoExists(true)}
+                    onError={() => setVideoExists(false)}
+                    className="aspect-video overflow-hidden bg-slate-800 rounded-lg mb-6 shadow-lg"
                   >
-                    <PlayIcon className="w-20 h-20 text-gray-300 opacity-40" />
-                  </a>
+                    <source
+                      src={
+                        (process.env.NODE_ENV === 'production'
+                          ? '/stripe-doc'
+                          : '') +
+                        '/docs/videos/' +
+                        id +
+                        '.mov'
+                      }
+                    />
+                  </video>
                   <div className="mt-3 sm:mt-5">
                     <Dialog.Title
                       as="h3"

@@ -15,7 +15,7 @@ const ExternalLink: FC<{
     >
       <span>{children}</span>
       {isExternal && (
-        <ExternalLinkIcon className="inline-block w-4 h-4 text-indigo-400 align-top ml-0.5" />
+        <ExternalLinkIcon className="inline-block w-3 h-3 text-indigo-400 align-top mr-0.5" />
       )}
     </a>
   );

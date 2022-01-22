@@ -1,12 +1,11 @@
 import { ClipboardIcon } from '@heroicons/react/outline';
-import { FC } from 'react';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
-import remarkGfm from 'remark-gfm';
 import toast from 'react-hot-toast';
 import ReactMarkdown from 'react-markdown';
 import { PrismLight as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { synthwave84 } from 'react-syntax-highlighter/dist/cjs/styles/prism';
 import remarkBreaks from 'remark-breaks';
+import remarkGfm from 'remark-gfm';
 import ExternalLink from './external-link';
 
 type Props = {
