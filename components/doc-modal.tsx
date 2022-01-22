@@ -90,7 +90,7 @@ export default function DocModal({ isOpen, onClose, doc, onComplete }: Props) {
                     >
                       {doc.title}
                     </Dialog.Title>
-                    <div className="mt-2">
+                    <div className="mt-6">
                       {doc && (
                         <DocCard
                           tool={doc.tool}

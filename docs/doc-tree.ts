@@ -41,15 +41,7 @@ export const DOC_TREE: {
         ],
         nextjs: [
           {
-            title: 'アカウントを作成',
-            videoURL: '',
-          },
-          {
-            title: '制限付きAPIキーを作成',
-            videoURL: '',
-          },
-          {
-            title: 'Webhookを作成',
+            title: 'アプリケーションを作成',
             videoURL: '',
           },
         ],
@@ -64,10 +56,6 @@ export const DOC_TREE: {
           },
           {
             title: 'Firebase Authentication の有効化',
-            videoURL: '',
-          },
-          {
-            title: 'Blazeプランにアップグレード',
             videoURL: '',
           },
           {

@@ -18,6 +18,13 @@ const MarkdownRender = ({ data }: Props) => {
     <ReactMarkdown
       remarkPlugins={[remarkBreaks, remarkGfm]}
       className="prose prose-sm prose-pre:p-0"
+      transformImageUri={(src) => {
+        if (process.env.NODE_ENV === 'production') {
+          return `/stripe-doc` + src;
+        } else {
+          return src;
+        }
+      }}
       components={{
         a({ href, children }) {
           return <ExternalLink href={href!}>{children}</ExternalLink>;
@@ -27,6 +34,17 @@ const MarkdownRender = ({ data }: Props) => {
             <pre className="first:mt-0 last:mb-0 overflow-hidden shadow">
               {children}
             </pre>
+          );
+        },
+        img({ src }) {
+          return (
+            <a href={src} target="_blank" rel="noreferrer">
+              <img
+                src={src}
+                className="rounded-md shadow overflow-hidden block"
+                alt=""
+              />
+            </a>
           );
         },
         code({ node, inline, className, children, ...props }) {
