@@ -1,6 +1,7 @@
 import { ClipboardIcon } from '@heroicons/react/outline';
 import { FC } from 'react';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
+import remarkGfm from 'remark-gfm';
 import toast from 'react-hot-toast';
 import ReactMarkdown from 'react-markdown';
 import { PrismLight as SyntaxHighlighter } from 'react-syntax-highlighter';
@@ -15,7 +16,7 @@ type Props = {
 const MarkdownRender = ({ data }: Props) => {
   return (
     <ReactMarkdown
-      remarkPlugins={[remarkBreaks]}
+      remarkPlugins={[remarkBreaks, remarkGfm]}
       className="prose prose-sm prose-pre:p-0"
       components={{
         a({ href, children }) {
