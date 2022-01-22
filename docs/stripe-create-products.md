@@ -1,0 +1,1 @@
+[商品と価格を作成](https://stripe.com/docs/billing/manage-prices)してください。

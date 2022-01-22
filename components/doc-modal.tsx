@@ -6,20 +6,21 @@ import toast from 'react-hot-toast';
 import { Doc } from '../docs/doc-tree';
 import { setComplteDoc } from '../lib/doc-storage';
 import DocCard from './doc-card';
+import { DocId, getDocTitle } from '../docs/doc-titles';
 
 type Props = {
   isOpen: boolean;
   onClose: VoidFunction;
   onComplete: (completeDocs: string[]) => void;
-  doc: Doc | null;
+  id: DocId | null;
 };
 
-export default function DocModal({ isOpen, onClose, doc, onComplete }: Props) {
+export default function DocModal({ isOpen, onClose, id, onComplete }: Props) {
   const completeButtonRef = useRef(null);
 
   const complete = () => {
-    if (doc) {
-      const newCOmpleteDocs = setComplteDoc(doc);
+    if (id) {
+      const newCOmpleteDocs = setComplteDoc(id);
       toast.success('完了しました', {
         position: 'bottom-center',
       });
@@ -27,10 +28,8 @@ export default function DocModal({ isOpen, onClose, doc, onComplete }: Props) {
     }
   };
 
-  const getGitHubDocPath = (doc: Doc, mode: 'blob' | 'edit') => {
-    return `https://github.com/flock-team/stripe-doc/${mode}/main/docs/${
-      doc.type
-    }/${doc.tool}/${doc.step + 1}-${doc.id + 1}.md`;
+  const getGitHubDocPath = (id: DocId, mode: 'blob' | 'edit') => {
+    return `https://github.com/flock-team/stripe-doc/${mode}/main/docs/${id}.md`;
   };
 
   return (
@@ -70,35 +69,26 @@ export default function DocModal({ isOpen, onClose, doc, onComplete }: Props) {
             leaveFrom="opacity-100 translate-y-0 sm:scale-100"
             leaveTo="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
           >
-            {doc && (
+            {id && (
               <div className="inline-block align-bottom bg-white rounded-lg px-4 pt-5 pb-4 text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full sm:p-6">
                 <div>
-                  {doc.videoURL && (
-                    <a
-                      href={doc.videoURL}
-                      target="_blank"
-                      className="aspect-video bg-slate-800 flex items-center justify-center rounded-lg mb-6 shadow-lg hover:shadow-xl transition-shadow"
-                      rel="noreferrer"
-                    >
-                      <PlayIcon className="w-20 h-20 text-gray-300 opacity-40" />
-                    </a>
-                  )}
+                  <a
+                    href={''}
+                    target="_blank"
+                    className="aspect-video bg-slate-800 flex items-center justify-center rounded-lg mb-6 shadow-lg hover:shadow-xl transition-shadow"
+                    rel="noreferrer"
+                  >
+                    <PlayIcon className="w-20 h-20 text-gray-300 opacity-40" />
+                  </a>
                   <div className="mt-3 sm:mt-5">
                     <Dialog.Title
                       as="h3"
                       className="text-lg text-center leading-6 font-medium text-gray-900"
                     >
-                      {doc.title}
+                      {getDocTitle(id)}
                     </Dialog.Title>
-                    <div className="mt-6">
-                      {doc && (
-                        <DocCard
-                          tool={doc.tool}
-                          type={doc.type}
-                          step={doc.step}
-                          id={doc.id}
-                        />
-                      )}
+                    <div className="mt-4">
+                      <DocCard id={id} />
                     </div>
                   </div>
                 </div>
@@ -125,11 +115,9 @@ export default function DocModal({ isOpen, onClose, doc, onComplete }: Props) {
                     <a
                       href={encodeURI(
                         `https://github.com/flock-team/stripe-doc/issues/new?body=## 該当ドキュメント\n${getGitHubDocPath(
-                          doc,
+                          id,
                           'blob'
-                        )}\n\n## 報告内容\n&title=ドキュメント報告: ${
-                          doc.type
-                        }-${doc.tool}-${doc.step + 1}-${doc.id + 1}`
+                        )}\n\n## 報告内容\n&title=ドキュメント報告: ${id}`
                       ).replace(/#/g, '%23')}
                       target="_blank"
                       className="flex items-center space-x-2 hover:text-gray-700"
@@ -139,7 +127,7 @@ export default function DocModal({ isOpen, onClose, doc, onComplete }: Props) {
                       <span>報告</span>
                     </a>
                     <a
-                      href={getGitHubDocPath(doc, 'edit')}
+                      href={getGitHubDocPath(id, 'edit')}
                       target="_blank"
                       className="flex items-center space-x-2 hover:text-gray-700"
                       rel="noreferrer"

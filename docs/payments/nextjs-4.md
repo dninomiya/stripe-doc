@@ -1,3 +1,0 @@
-1. [商品を購入](https://github.com/stripe/stripe-firebase-extensions/blob/master/firestore-stripe-payments/POSTINSTALL.md#one-time-payments-on-the-web)
-   - [クーポンの入力を許可](https://github.com/stripe/stripe-firebase-extensions/blob/master/firestore-stripe-payments/POSTINSTALL.md#applying-discount-coupon-promotion-codes)
-   - [クーポンの使用](https://github.com/stripe/stripe-firebase-extensions/blob/master/firestore-stripe-payments/POSTINSTALL.md#applying-promotion-codes-programmatically)

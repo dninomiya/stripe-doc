@@ -1,1 +1,0 @@
-1. [カスタマーポータルのカスタマイズ](https://stripe.com/docs/billing/subscriptions/integrating-customer-portal?platform=billing#configure)

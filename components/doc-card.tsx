@@ -1,20 +1,13 @@
-import { DocType } from '../docs/doc-tree';
+import { DocId } from '../docs/doc-titles';
 import MarkdownRender from './markdown-render';
 
 type Props = {
-  type: DocType;
-  tool: string;
-  id: number;
-  step: number;
+  id: DocId;
 };
 
-const DocCard = ({ tool, type, step, id }: Props) => {
-  console.log(`../docs/${type}/${tool}/${step + 1}-${id + 1}.md`);
-
+const DocCard = ({ id }: Props) => {
   try {
-    const markdown = require(`../docs/${type}/${tool}/${step + 1}-${
-      id + 1
-    }.md`)?.default;
+    const markdown = require(`../docs/${id}.md`)?.default;
 
     return (
       <div>

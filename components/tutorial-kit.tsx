@@ -8,6 +8,7 @@ import {
 } from '@icons-pack/react-simple-icons';
 import Head from 'next/head';
 import { ReactNode, useEffect, useState } from 'react';
+import { DocId, getDocTitle } from '../docs/doc-titles';
 import { Doc, DocType, DOC_TREE, TOOLS } from '../docs/doc-tree';
 import { classNames } from '../lib/class-names';
 import { getCompleteDocs } from '../lib/doc-storage';
@@ -31,7 +32,7 @@ type Props = {
 };
 
 const TutorialKit = ({ title, description, scenes, type, videoURL }: Props) => {
-  const [target, setTarget] = useState<Doc | null>(null);
+  const [target, setTarget] = useState<DocId | null>(null);
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [completeDocs, setCompleteDocs] = useState<string[]>();
 
@@ -93,20 +94,12 @@ const TutorialKit = ({ title, description, scenes, type, videoURL }: Props) => {
                   </h2>
                   {TOOLS.map((tool) => (
                     <div key={tool} className="col-span-2 space-y-2">
-                      {step.tool[tool]?.map((item, id: number) => {
+                      {step.tool[tool]?.map((id) => {
                         return (
                           <button
-                            key={item.title}
+                            key={title}
                             onClick={() => {
-                              setTarget({
-                                step: stepIndex,
-                                id,
-                                type,
-                                tool,
-                                title: item.title,
-                                videoURL: item.videoURL,
-                              });
-
+                              setTarget(id);
                               setIsOpen(true);
                             }}
                             className="flex items-center text-gray-600 hover:text-gray-800 text-left space-x-2 w-full"
@@ -114,14 +107,12 @@ const TutorialKit = ({ title, description, scenes, type, videoURL }: Props) => {
                             <CheckCircleIcon
                               className={classNames(
                                 'w-6 h-6',
-                                completeDocs?.includes(
-                                  `${type}-${tool}-${stepIndex}-${id}`
-                                )
+                                completeDocs?.includes(id)
                                   ? 'text-lime-500'
                                   : 'opacity-10'
                               )}
                             />
-                            <span className="text-sm">{item.title}</span>
+                            <span className="text-sm">{getDocTitle(id)}</span>
                           </button>
                         );
                       })}
@@ -140,7 +131,7 @@ const TutorialKit = ({ title, description, scenes, type, videoURL }: Props) => {
           setIsOpen(false);
           setCompleteDocs(newCompleteDocs);
         }}
-        doc={target}
+        id={target}
       />
     </div>
   );
