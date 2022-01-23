@@ -21,7 +21,7 @@ export const DOC_TREE: {
           'stripe-create-api-key',
           'stripe-create-webhook',
         ],
-        nextjs: ['nextjs-setup'],
+        nextjs: ['nextjs-setup', 'nextjs-firebase-initialize'],
         firebase: [
           'firebase-create-project',
           'firebase-create-firestore',

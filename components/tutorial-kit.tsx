@@ -7,6 +7,7 @@ import {
   Stripe,
 } from '@icons-pack/react-simple-icons';
 import Head from 'next/head';
+import Link from 'next/link';
 import { Router, useRouter } from 'next/router';
 import { ReactNode, useEffect, useState } from 'react';
 import { DocId, getDocTitle } from '../docs/doc-titles';
@@ -110,21 +111,19 @@ const TutorialKit = ({ title, description, scenes, type, videoURL }: Props) => {
                     <div key={tool} className="col-span-2 space-y-2">
                       {step.tool[tool]?.map((id) => {
                         return (
-                          <button
-                            key={id}
-                            onClick={() => changeRoute(id)}
-                            className="flex items-center text-gray-600 hover:text-gray-800 text-left space-x-2 w-full"
-                          >
-                            <CheckCircleIcon
-                              className={classNames(
-                                'w-6 h-6',
-                                completeDocs?.includes(id)
-                                  ? 'text-lime-500'
-                                  : 'opacity-10'
-                              )}
-                            />
-                            <span className="text-sm">{getDocTitle(id)}</span>
-                          </button>
+                          <Link key={id} shallow href={`?id=${id}`}>
+                            <a className="flex items-center text-gray-600 hover:text-gray-800 text-left space-x-2 w-full">
+                              <CheckCircleIcon
+                                className={classNames(
+                                  'w-6 h-6',
+                                  completeDocs?.includes(id)
+                                    ? 'text-lime-500'
+                                    : 'opacity-10'
+                                )}
+                              />
+                              <span className="text-sm">{getDocTitle(id)}</span>
+                            </a>
+                          </Link>
                         );
                       })}
                     </div>
