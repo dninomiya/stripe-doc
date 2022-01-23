@@ -29,7 +29,7 @@ const DocVideo = ({ id }: Props) => {
     (process.env.NODE_ENV === 'production' ? '/stripe-doc' : '') +
     '/docs/videos/' +
     id +
-    '.mov';
+    '.mp4';
 
   return (
     <video
