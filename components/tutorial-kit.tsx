@@ -15,10 +15,11 @@ import { DocType, DOC_TREE, TOOLS } from '../docs/doc-tree';
 import { classNames } from '../lib/class-names';
 import { getCompleteDocs } from '../lib/doc-storage';
 import DocModal from './doc-modal';
+import ExternalLink from './external-link';
 
 const ToolTab = ({ title, TabIcon }: { title: string; TabIcon: Icon }) => {
   return (
-    <div className="col-span-2 px-4 justify-center flex items-center space-x-2 text-center">
+    <div className="px-4 justify-center flex items-center space-x-2 text-center">
       <TabIcon size={24} className="text-gray-500" />
       <span className="block text-gray-600">{title}</span>
     </div>
@@ -89,8 +90,29 @@ const TutorialKit = ({ title, description, scenes, type, videoURL }: Props) => {
         </div>
 
         <div className="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
+          <div className="mt-6 mb-10 max-w-3xl">
+            <h2 className="font-bold text-2xl mb-4 text-gray-800">
+              Next.js と Firebase を使ったモダンなチュートリアル
+            </h2>
+            <p className="opacity-80 leading-relaxed">
+              現在最もホットなWebアプリ開発フレームワークである
+              <ExternalLink href="https://nextjs.org/">
+                Next.js
+              </ExternalLink>{' '}
+              とGoogleがサポートする
+              <ExternalLink href="https://firebase.google.com/?hl=ja">
+                Firebase
+              </ExternalLink>
+              を組み合わせると驚くほど簡単に決済機能を実装することができます。
+              <ExternalLink href="https://firebase.google.com/products/extensions/stripe-firestore-stripe-payments?hl=ja">
+                FirebaseのStripe拡張機能
+              </ExternalLink>
+              を使うことで実装の大部分を省略できます。チュートリアルに沿ってデモアプリを実装してみましょう。
+            </p>
+          </div>
+
           <div className="mb-20">
-            <div className="grid grid-cols-7 gap-2 sticky top-0 py-4 border-b bg-white">
+            <div className="grid grid-cols-4 gap-2 sticky top-0 py-4 border-b bg-white">
               <div></div>
               <ToolTab TabIcon={Stripe} title="Stripe" />
               <ToolTab TabIcon={Nextdotjs} title="Next.js" />
@@ -98,7 +120,7 @@ const TutorialKit = ({ title, description, scenes, type, videoURL }: Props) => {
             </div>
             <div className="divide-dashed divide-y">
               {DOC_TREE.payments.map((step, stepIndex) => (
-                <div className="grid grid-cols-7 gap-2 py-6" key={stepIndex}>
+                <div className="grid grid-cols-4 gap-2 py-6" key={stepIndex}>
                   <h2>
                     <span className="text-gray-500 font-bold">
                       STEP {stepIndex + 1}
@@ -108,7 +130,7 @@ const TutorialKit = ({ title, description, scenes, type, videoURL }: Props) => {
                     </p>
                   </h2>
                   {TOOLS.map((tool) => (
-                    <div key={tool} className="col-span-2 space-y-2">
+                    <div key={tool} className="space-y-2">
                       {step.tool[tool]?.map((id) => {
                         return (
                           <Link key={id} shallow href={`?id=${id}`}>
