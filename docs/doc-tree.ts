@@ -37,7 +37,7 @@ export const DOC_TREE: {
       title: '商品の作成と表示',
       tool: {
         stripe: ['stripe-create-products', 'stripe-create-tax'],
-        nextjs: ['nextjs-list-items'],
+        nextjs: ['nextjs-auth', 'nextjs-list-items'],
       },
     },
     {

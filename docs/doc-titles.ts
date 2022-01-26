@@ -20,6 +20,7 @@ export const DOC_TITLES = {
   'nextjs-firebase-initialize': 'Firebaseの初期化',
   'firebase-create-web-app': 'アプリの登録',
   'nextjs-purchase-history': '購入履歴の表示',
+  'nextjs-auth': 'ログイン/ログアウトの実装',
 };
 
 export type DocId = keyof typeof DOC_TITLES;
