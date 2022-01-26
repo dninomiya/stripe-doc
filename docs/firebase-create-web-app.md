@@ -1,0 +1,1 @@
+[アプリの登録](https://firebase.google.com/docs/web/setup?hl=ja#register-app)を行なってください。登録後に生成される設定コードはアプリケーション内で[Firebaseを初期化](?id=nextjs-firebase-initialize)する際に使います。

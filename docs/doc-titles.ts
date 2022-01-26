@@ -17,8 +17,10 @@ export const DOC_TITLES = {
   'firebase-event-handler': 'フルフィルメントの実装',
   'stripe-customer-portal-customize': 'カスタマーポータルのカスタマイズ',
   'nextjs-customer-portal-open': 'カスタマーポータルを開く',
-  'nextjs-checkout-payments': '支払いを開始する',
+  'nextjs-checkout-payments': '支払いを開始',
   'nextjs-firebase-initialize': 'Firebaseの初期化',
+  'firebase-create-web-app': 'アプリの登録',
+  'nextjs-purchase-history': '購入履歴の表示',
 };
 
 export type DocId = keyof typeof DOC_TITLES;

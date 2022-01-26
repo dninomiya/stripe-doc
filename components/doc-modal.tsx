@@ -144,7 +144,11 @@ export default function DocModal({ isOpen, onClose, id, onComplete }: Props) {
                       <span>報告</span>
                     </a>
                     <a
-                      href={getGitHubDocPath(docId, 'edit')}
+                      href={
+                        process.env.NODE_ENV === 'production'
+                          ? getGitHubDocPath(docId, 'edit')
+                          : `vscode://file/${process.env.NEXT_PUBLIC_PROJECT_PATH}/docs/${id}.md`
+                      }
                       target="_blank"
                       className="flex items-center space-x-2 hover:text-gray-700"
                       rel="noreferrer"

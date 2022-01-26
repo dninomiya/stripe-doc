@@ -1,6 +1,4 @@
-[ドキュメント](https://github.com/stripe/stripe-firebase-extensions/blob/master/firestore-stripe-payments/POSTINSTALL.md#configure-stripe-webhooks)に従ってWebhookを作成します。
-
-エンドポイントのURLはFirebase Stripe拡張機能のインストール後に作成されるCloud FunctionsのHTTP関数のURLを設定してください。
+StripeダッシュボードからWebhookを作成します。WebhookのURLはFirebaseコンソールの拡張機能管理画面にある[[この拡張機能の動作]](https://console.firebase.google.com/project/_/extensions/instances/firestore-stripe-payments?tab=details)に記載されています。
 
 受け取るイベントは以下を設定してください。
 

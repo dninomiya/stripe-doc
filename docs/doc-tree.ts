@@ -24,6 +24,7 @@ export const DOC_TREE: {
         nextjs: ['nextjs-setup', 'nextjs-firebase-initialize'],
         firebase: [
           'firebase-create-project',
+          'firebase-create-web-app',
           'firebase-create-firestore',
           'firebase-authentication',
           'firebase-install-stripe-extension',
@@ -43,7 +44,12 @@ export const DOC_TREE: {
       title: '商品の購入',
       tool: {
         nextjs: ['nextjs-checkout-payments'],
-        firebase: ['firebase-install-stripe', 'firebase-event-handler'],
+      },
+    },
+    {
+      title: '購入した商品の表示',
+      tool: {
+        nextjs: ['nextjs-purchase-history'],
       },
     },
     {
