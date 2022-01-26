@@ -16,7 +16,7 @@ const ExternalLink: FC<{
         target="_blank"
       >
         <span>{children}</span>
-        <ExternalLinkIcon className="inline-block w-3 h-3 text-indigo-400 align-top mr-0.5" />
+        <ExternalLinkIcon className="inline-block w-3 h-3 text-indigo-400 align-top" />
       </a>
     );
   } else {

@@ -95,19 +95,17 @@ const TutorialKit = ({ title, description, scenes, type, videoURL }: Props) => {
               Next.js と Firebase を使ったモダンなチュートリアル
             </h2>
             <p className="opacity-80 leading-relaxed">
-              現在最もホットなWebアプリ開発フレームワークである
-              <ExternalLink href="https://nextjs.org/">
-                Next.js
-              </ExternalLink>{' '}
-              とGoogleがサポートする
+              現在最もホットなWebアプリ開発フレームワークである{' '}
+              <ExternalLink href="https://nextjs.org/">Next.js</ExternalLink>{' '}
+              とGoogleがサポートする{' '}
               <ExternalLink href="https://firebase.google.com/?hl=ja">
                 Firebase
-              </ExternalLink>
-              を組み合わせると驚くほど簡単に決済機能を実装することができます。
+              </ExternalLink>{' '}
+              を組み合わせると驚くほど簡単に決済機能を実装することができます。{' '}
               <ExternalLink href="https://firebase.google.com/products/extensions/stripe-firestore-stripe-payments?hl=ja">
                 FirebaseのStripe拡張機能
-              </ExternalLink>
-              を使うことで実装の大部分を省略できます。チュートリアルに沿ってデモアプリを実装してみましょう。
+              </ExternalLink>{' '}
+              を使うことで実装の大部分が不要になります。チュートリアルに沿ってデモアプリを実装してみましょう。
             </p>
           </div>
 
