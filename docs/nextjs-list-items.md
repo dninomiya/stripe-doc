@@ -54,10 +54,10 @@ const ProductList = ({ user }: Props) => {
   return (
     <div>
       {products?.map((product) => (
-        <div>
+        <div key={product.id}>
           <h2>{product.name}</h2>
           {product.prices.map((price) => (
-            <div>
+            <div key={price.id}>
               {price.description || '通常'} -{' '}
               {price.unit_amount.toLocaleString()}円
             </div>
