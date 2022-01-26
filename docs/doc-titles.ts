@@ -14,7 +14,7 @@ export const DOC_TITLES = {
   'stripe-create-products': '商品と価格を作成',
   'stripe-create-tax': '税率を作成',
   'stripe-create-webhook': 'Webhookを作成',
-  'stripe-customer-portal-customize': 'カスタマーポータルのカスタマイズ',
+  'stripe-customer-portal-customize': 'カスタマーポータルの設定',
   'nextjs-customer-portal-open': 'カスタマーポータルを開く',
   'nextjs-checkout-payments': '支払いを開始',
   'nextjs-firebase-initialize': 'Firebaseの初期化',
