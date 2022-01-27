@@ -21,6 +21,8 @@ export const DOC_TITLES = {
   'firebase-create-web-app': 'アプリの登録',
   'nextjs-purchase-history': '購入履歴の表示',
   'nextjs-auth': 'ログイン/ログアウトの実装',
+  'stripe-create-products-billing': '商品と価格を作成',
+  'nextjs-list-items-billing': 'プラン一覧の表示',
 };
 
 export type DocId = keyof typeof DOC_TITLES;

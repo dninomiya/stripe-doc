@@ -60,6 +60,53 @@ export const DOC_TREE: {
       },
     },
   ],
-  billing: [],
+  billing: [
+    {
+      title: '環境構築',
+      tool: {
+        stripe: [
+          'stripe-create-account',
+          'stripe-create-api-key',
+          'stripe-create-webhook',
+        ],
+        nextjs: ['nextjs-setup', 'nextjs-firebase-initialize'],
+        firebase: [
+          'firebase-create-project',
+          'firebase-create-web-app',
+          'firebase-create-firestore',
+          'firebase-authentication',
+          'firebase-install-stripe-extension',
+          'firebase-security-rule',
+          'firebase-rebuild-extension',
+        ],
+      },
+    },
+    {
+      title: '商品の作成と表示',
+      tool: {
+        stripe: ['stripe-create-products-billing', 'stripe-create-tax'],
+        nextjs: ['nextjs-auth', 'nextjs-list-items-billing'],
+      },
+    },
+    {
+      title: '商品の購入',
+      tool: {
+        nextjs: ['nextjs-checkout-payments'],
+      },
+    },
+    {
+      title: '購入した商品の表示',
+      tool: {
+        nextjs: ['nextjs-purchase-history'],
+      },
+    },
+    {
+      title: '支払い方法の管理',
+      tool: {
+        stripe: ['stripe-customer-portal-customize'],
+        nextjs: ['nextjs-customer-portal-open'],
+      },
+    },
+  ],
   connect: [],
 };

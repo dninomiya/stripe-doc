@@ -8,7 +8,7 @@ import {
 } from '@icons-pack/react-simple-icons';
 import Head from 'next/head';
 import Link from 'next/link';
-import { Router, useRouter } from 'next/router';
+import { useRouter } from 'next/router';
 import { ReactNode, useEffect, useState } from 'react';
 import { DocId, getDocTitle } from '../docs/doc-titles';
 import { DocType, DOC_TREE, TOOLS } from '../docs/doc-tree';
@@ -92,7 +92,7 @@ const TutorialKit = ({ title, description, scenes, type, videoURL }: Props) => {
         <div className="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
           <div className="mt-6 mb-10 max-w-3xl">
             <h2 className="font-bold text-2xl mb-4 text-gray-800">
-              Next.js と Firebase を使ったモダンなチュートリアル
+              Next.js と Firebase
             </h2>
             <p className="opacity-80 leading-relaxed">
               現在最もホットなWebアプリ開発フレームワークである{' '}
@@ -110,14 +110,14 @@ const TutorialKit = ({ title, description, scenes, type, videoURL }: Props) => {
           </div>
 
           <div className="mb-20">
-            <div className="grid grid-cols-4 gap-2 sticky top-0 py-4 border-b bg-white">
+            <div className="grid grid-cols-4 gap-2 sticky z-20 top-0 py-4 border-b bg-white">
               <div></div>
               <ToolTab TabIcon={Stripe} title="Stripe" />
               <ToolTab TabIcon={Nextdotjs} title="Next.js" />
               <ToolTab TabIcon={Firebase} title="Firebase" />
             </div>
             <div className="divide-dashed divide-y">
-              {DOC_TREE.payments.map((step, stepIndex) => (
+              {DOC_TREE[type].map((step, stepIndex) => (
                 <div className="grid grid-cols-4 gap-2 py-6" key={stepIndex}>
                   <h2>
                     <span className="text-gray-500 font-bold">
