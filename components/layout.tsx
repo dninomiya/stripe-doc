@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { FC } from 'react';
 import { classNames } from '../lib/class-names';
+import Footer from './footer';
 import ThemeSwitch from './theme-switch';
 
 const navigation = [
@@ -37,10 +38,12 @@ const Layout: FC = ({ children }) => {
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
               <div className="flex items-center justify-between h-16">
                 <div className="flex items-center">
-                  <div className="flex-shrink-0 flex items-center space-x-2 text-white">
-                    <Stripe />
-                    <span className="font-bold">Tutorial</span>
-                  </div>
+                  <p className="flex-shrink-0 text-white">
+                    <span className="font-bold text-xl">Stripe</span>
+                    <span className="text-sm ml-1 opacity-80">
+                      ビギナーズガイド🔰
+                    </span>
+                  </p>
                   <div className="hidden md:block">
                     <div className="ml-10 flex items-baseline space-x-4">
                       {navigation.map((item) => (
@@ -113,26 +116,7 @@ const Layout: FC = ({ children }) => {
 
       <main>{children}</main>
 
-      <footer className="bg-white">
-        <div className="max-w-7xl mx-auto py-12 px-4 sm:px-6 md:flex md:items-center md:justify-between lg:px-8">
-          <div className="flex justify-center space-x-6 md:order-2">
-            <a
-              href="https://twitter.com/d151005"
-              target="_blank"
-              rel="noreferrer"
-              className="text-gray-400 hover:text-gray-500"
-            >
-              <span className="sr-only">Twitter</span>
-              <Twitter className="h-6 w-6" aria-hidden="true" />
-            </a>
-          </div>
-          <div className="mt-8 md:mt-0 md:order-1">
-            <p className="text-center text-base text-gray-400">
-              &copy; 2022 nino.
-            </p>
-          </div>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 };

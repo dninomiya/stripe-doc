@@ -31,6 +31,7 @@ export const DOC_TITLES = {
   'nextjs-create-connect-account': '販売アカウントの作成関数の実行',
   'stripe-connect-settings': 'Connectの設定',
   'firebase-create-customer': 'カスタマー作成トリガーの実装',
+  'nextjs-auth-connect': 'ログイン機能の実装',
 };
 
 export type DocId = keyof typeof DOC_TITLES;

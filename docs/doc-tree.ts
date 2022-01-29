@@ -131,7 +131,7 @@ export const DOC_TREE: {
     {
       title: 'カスタマーの作成',
       tool: {
-        nextjs: ['nextjs-auth'],
+        nextjs: ['nextjs-auth-connect'],
         firebase: ['firebase-create-customer'],
       },
     },

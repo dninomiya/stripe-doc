@@ -13,7 +13,7 @@ import { ReactNode, useEffect, useState } from 'react';
 import { DocId, getDocTitle } from '../docs/doc-titles';
 import { DocType, DOC_TREE, TOOLS } from '../docs/doc-tree';
 import { classNames } from '../lib/class-names';
-import { getCompleteDocs } from '../lib/doc-storage';
+import { getCompleteDocs, resetCompleteDocs } from '../lib/doc-storage';
 import DocModal from './doc-modal';
 
 const ToolTab = ({ title, TabIcon }: { title: string; TabIcon: Icon }) => {
@@ -67,6 +67,10 @@ const TutorialKit = ({
     setCompleteDocs(getCompleteDocs());
   }, []);
 
+  const resetCompletes = () => {
+    setCompleteDocs(resetCompleteDocs());
+  };
+
   return (
     <div>
       <Head>
@@ -106,6 +110,9 @@ const TutorialKit = ({
               {demo.title}
             </h2>
             <p className="opacity-80 leading-relaxed">{demo.description}</p>
+            <button className="text-gray-400 mt-4" onClick={resetCompletes}>
+              完了状態をリセットする
+            </button>
           </div>
 
           <div className="mb-20">

@@ -23,3 +23,8 @@ export const removeCompleteDoc = (id: DocId) => {
   localStorage.setItem('complete', newCompleteDocs.join(','));
   return newCompleteDocs;
 };
+
+export const resetCompleteDocs = () => {
+  localStorage.removeItem('complete');
+  return [];
+};

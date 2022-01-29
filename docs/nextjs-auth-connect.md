@@ -1,3 +1,7 @@
+事前に[カスタマー作成トリガーのデプロイ](?id=firebase-create-customer)を完了させてください。
+
+以下のコードでログイン機能を実装できます。
+
 ```tsx:pages.index.tsx
 import {
   GoogleAuthProvider,
@@ -55,3 +59,8 @@ const Home: NextPage = () => {
 
 export default Home;
 ```
+
+ログイン後に以下を確認してください。
+
+- Stripeダッシュボードの顧客ページにカスタマーが追加されていること
+- Firestoreの `customers` コレクションにドキュメント作成されていること
