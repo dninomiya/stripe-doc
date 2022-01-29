@@ -8,6 +8,14 @@ import remarkBreaks from 'remark-breaks';
 import remarkGfm from 'remark-gfm';
 import ExternalLink from './external-link';
 
+import tsx from 'react-syntax-highlighter/dist/esm/languages/prism/tsx';
+import ts from 'react-syntax-highlighter/dist/esm/languages/prism/typescript';
+import bash from 'react-syntax-highlighter/dist/esm/languages/prism/bash';
+
+SyntaxHighlighter.registerLanguage('tsx', tsx);
+SyntaxHighlighter.registerLanguage('ts', ts);
+SyntaxHighlighter.registerLanguage('bash', bash);
+
 type Props = {
   data: string;
 };
