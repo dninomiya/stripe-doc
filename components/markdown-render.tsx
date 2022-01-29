@@ -11,10 +11,12 @@ import ExternalLink from './external-link';
 import tsx from 'react-syntax-highlighter/dist/esm/languages/prism/tsx';
 import ts from 'react-syntax-highlighter/dist/esm/languages/prism/typescript';
 import bash from 'react-syntax-highlighter/dist/esm/languages/prism/bash';
+import diff from 'react-syntax-highlighter/dist/esm/languages/prism/diff';
 
 SyntaxHighlighter.registerLanguage('tsx', tsx);
 SyntaxHighlighter.registerLanguage('ts', ts);
 SyntaxHighlighter.registerLanguage('bash', bash);
+SyntaxHighlighter.registerLanguage('diff', diff);
 
 type Props = {
   data: string;

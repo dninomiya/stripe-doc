@@ -12,9 +12,9 @@ const fns = functions.region("asia-northeast1");
 
 export const createCustomer = fns.auth.user().onCreate(async (user) => {
   const customer = await stripe.customers.create({
+    name: user.displayName,
+    email: user.email,
     metadata: {
-      name: user.displayName,
-      email: user.email,
       firebaseUID: user.uid,
     },
   });

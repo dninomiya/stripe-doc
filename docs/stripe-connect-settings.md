@@ -1,1 +1,1 @@
-[Connect の設定ページ](https://dashboard.stripe.com/account/applications/settings) でブランドのタイトルとリダイレクトURLを設定します。
+[Connect の設定ページ](https://dashboard.stripe.com/account/applications/settings) でブランドのタイトルとアイコン、リダイレクトURLを設定します。この設定を行わないとConnect が正常に機能しません。

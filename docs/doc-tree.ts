@@ -136,18 +136,24 @@ export const DOC_TREE: {
       },
     },
     {
+      title: 'Connectアカウントの作成',
+      tool: {
+        stripe: ['stripe-connect-settings'],
+        nextjs: [
+          'nextjs-create-connect-account',
+          'nextjs-required-verification-information',
+        ],
+        firebase: [
+          'firebase-create-connect-account',
+          'firebase-required-verification-information',
+        ],
+      },
+    },
+    {
       title: '商品の作成と表示',
       tool: {
         stripe: ['stripe-create-products-billing', 'stripe-create-tax'],
         nextjs: ['nextjs-list-items-billing'],
-      },
-    },
-    {
-      title: '販売アカウントの作成',
-      tool: {
-        stripe: ['stripe-connect-settings'],
-        nextjs: ['nextjs-create-connect-account'],
-        firebase: ['firebase-create-connect-account'],
       },
     },
     {
