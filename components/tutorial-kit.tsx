@@ -51,11 +51,10 @@ const TutorialKit = ({
   const docId = router.query.id as DocId;
 
   const changeRoute = (id?: string) => {
-    console.log(router.pathname);
     router.push(
       {
         pathname: router.pathname,
-        query: id ? { id } : null,
+        query: id ? { id } : {},
       },
       undefined,
       {
@@ -156,7 +155,7 @@ const TutorialKit = ({
       </div>
       <DocModal
         isOpen={Boolean(docId)}
-        onClose={changeRoute}
+        onClose={() => changeRoute()}
         onComplete={(newCompleteDocs) => {
           changeRoute();
           setCompleteDocs(newCompleteDocs);

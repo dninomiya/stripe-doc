@@ -3,8 +3,8 @@ const REPO_NAME = 'stripe-doc';
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
-  basePath: process.env.GITHUB_ACTIONS ? '/' + REPO_NAME : '',
-  assetPrefix: process.env.GITHUB_ACTIONS ? '/' + REPO_NAME : '',
+  basePath: process.env.NODE_ENV === 'production' ? '/' + REPO_NAME : '',
+  assetPrefix: process.env.NODE_ENV === 'production' ? '/' + REPO_NAME : '',
   trailingSlash: true,
   webpack: (config) => {
     config.module.rules.push({
