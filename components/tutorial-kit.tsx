@@ -15,7 +15,6 @@ import { DocType, DOC_TREE, TOOLS } from '../docs/doc-tree';
 import { classNames } from '../lib/class-names';
 import { getCompleteDocs } from '../lib/doc-storage';
 import DocModal from './doc-modal';
-import ExternalLink from './external-link';
 
 const ToolTab = ({ title, TabIcon }: { title: string; TabIcon: Icon }) => {
   return (
@@ -52,8 +51,10 @@ const TutorialKit = ({
   const docId = router.query.id as DocId;
 
   const changeRoute = (id?: string) => {
+    console.log(router.pathname);
     router.push(
       {
+        pathname: router.pathname,
         query: id ? { id } : null,
       },
       undefined,
@@ -155,7 +156,7 @@ const TutorialKit = ({
       </div>
       <DocModal
         isOpen={Boolean(docId)}
-        onClose={() => changeRoute()}
+        onClose={changeRoute}
         onComplete={(newCompleteDocs) => {
           changeRoute();
           setCompleteDocs(newCompleteDocs);
