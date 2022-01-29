@@ -3,6 +3,8 @@ export const DOC_TITLES = {
   'firebase-create-firestore': 'Cloud Firestore データベースを作成',
   'firebase-create-project': 'Firebaseプロジェクトを作成',
   'firebase-install-stripe': 'Stripe Node.js Library のインストール',
+  'firebase-initialize': 'Firebaseプロジェクトの初期化',
+  'firebase-create-connect-account': '販売アカウント作成関数を作成',
   'firebase-rebuild-extension': '署名シークレットの設定',
   'firebase-security-rule': 'Cloud Firestore セキュリティルールを設定',
   'firebase-install-stripe-extension':
@@ -23,6 +25,12 @@ export const DOC_TITLES = {
   'nextjs-auth': 'ログイン/ログアウトの実装',
   'stripe-create-products-billing': '商品と価格を作成',
   'nextjs-list-items-billing': 'プラン一覧の表示',
+  'nextjs-checkout-billing': 'プランの購入',
+  'nextjs-display-role': '権限の表示',
+  'stripe-customer-portal-customize-billing': 'カスタマーポータルの設定',
+  'nextjs-create-connect-account': '販売アカウントの作成関数の実行',
+  'stripe-connect-settings': 'Connectの設定',
+  'firebase-create-customer': 'カスタマー作成トリガーの実装',
 };
 
 export type DocId = keyof typeof DOC_TITLES;

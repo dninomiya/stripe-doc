@@ -32,9 +32,20 @@ type Props = {
   description: ReactNode;
   scenes: string[];
   videoURL: string;
+  demo: {
+    title: string;
+    description: ReactNode;
+  };
 };
 
-const TutorialKit = ({ title, description, scenes, type, videoURL }: Props) => {
+const TutorialKit = ({
+  title,
+  description,
+  scenes,
+  type,
+  videoURL,
+  demo,
+}: Props) => {
   const [completeDocs, setCompleteDocs] = useState<string[]>();
   const router = useRouter();
 
@@ -92,25 +103,13 @@ const TutorialKit = ({ title, description, scenes, type, videoURL }: Props) => {
         <div className="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
           <div className="mt-6 mb-10 max-w-3xl">
             <h2 className="font-bold text-2xl mb-4 text-gray-800">
-              Next.js と Firebase
+              {demo.title}
             </h2>
-            <p className="opacity-80 leading-relaxed">
-              現在最もホットなWebアプリ開発フレームワークである{' '}
-              <ExternalLink href="https://nextjs.org/">Next.js</ExternalLink>{' '}
-              とGoogleがサポートする{' '}
-              <ExternalLink href="https://firebase.google.com/?hl=ja">
-                Firebase
-              </ExternalLink>{' '}
-              を組み合わせると驚くほど簡単に決済機能を実装することができます。{' '}
-              <ExternalLink href="https://firebase.google.com/products/extensions/stripe-firestore-stripe-payments?hl=ja">
-                FirebaseのStripe拡張機能
-              </ExternalLink>{' '}
-              を使うことで実装の大部分が不要になります。チュートリアルに沿ってデモアプリを実装してみましょう。
-            </p>
+            <p className="opacity-80 leading-relaxed">{demo.description}</p>
           </div>
 
           <div className="mb-20">
-            <div className="grid grid-cols-4 gap-2 sticky z-20 top-0 py-4 border-b bg-white">
+            <div className="grid grid-cols-4 gap-2 sticky z-10 top-0 py-4 border-b bg-white">
               <div></div>
               <ToolTab TabIcon={Stripe} title="Stripe" />
               <ToolTab TabIcon={Nextdotjs} title="Next.js" />

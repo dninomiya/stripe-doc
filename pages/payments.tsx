@@ -32,6 +32,24 @@ const Home: NextPage = () => {
           '有料機能のアンロック',
           '投げ銭',
         ]}
+        demo={{
+          title: 'Next.js と Firebase',
+          description: (
+            <>
+              現在最もホットなWebアプリ開発フレームワークである{' '}
+              <ExternalLink href="https://nextjs.org/">Next.js</ExternalLink>{' '}
+              とGoogleがサポートする{' '}
+              <ExternalLink href="https://firebase.google.com/?hl=ja">
+                Firebase
+              </ExternalLink>{' '}
+              を組み合わせると驚くほど簡単に決済機能を実装することができます。{' '}
+              <ExternalLink href="https://firebase.google.com/products/extensions/stripe-firestore-stripe-payments?hl=ja">
+                FirebaseのStripe拡張機能
+              </ExternalLink>{' '}
+              を使うことで実装の大部分が不要になります。チュートリアルに沿ってデモアプリを実装してみましょう。
+            </>
+          ),
+        }}
       />
     </div>
   );

@@ -25,6 +25,20 @@ const Home: NextPage = () => {
           </p>
         }
         scenes={['フリーマーケット', 'オンラインサロン', 'クラウドソーシング']}
+        demo={{
+          title: 'Next.js と Firebase',
+          description: (
+            <>
+              現在最もホットなWebアプリ開発フレームワークである{' '}
+              <ExternalLink href="https://nextjs.org/">Next.js</ExternalLink>{' '}
+              とGoogleがサポートする{' '}
+              <ExternalLink href="https://firebase.google.com/?hl=ja">
+                Firebase
+              </ExternalLink>{' '}
+              を組み合わせると驚くほど簡単に決済機能を実装することができます。チュートリアルに沿ってデモアプリを実装してみましょう。
+            </>
+          ),
+        }}
       />
     </div>
   );

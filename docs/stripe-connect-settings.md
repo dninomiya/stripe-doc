@@ -1,0 +1,1 @@
+[Connect の設定ページ](https://dashboard.stripe.com/account/applications/settings) でブランドのタイトルとリダイレクトURLを設定します。
