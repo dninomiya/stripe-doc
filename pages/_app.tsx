@@ -15,9 +15,10 @@ function MyApp({ Component, pageProps }: AppProps) {
       <Head>
         <link
           rel="icon"
+          type="image/svg+xml"
           href={`${
             process.env.NODE_ENV === 'production' ? '/stripe-doc' : ''
-          }/favicon.ico`}
+          }/favicon.svg`}
         />
       </Head>
       <DefaultSeo
@@ -35,6 +36,7 @@ function MyApp({ Component, pageProps }: AppProps) {
           cardType: 'summary_large_image',
         }}
         titleTemplate={`%s | ${SITE_TITLE}`}
+        description="はじめてStripeを導入する方に向けたオープンソースの実装ガイドです。"
       />
       <Layout>
         <Component {...pageProps} />
