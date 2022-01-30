@@ -6,7 +6,7 @@
 // 追加
 const redirectStripeAccountForm = async () => {
     const callable = httpsCallable(fns, 'getStripeAccountFormLink');
-    const { data } = await callable();
+    const { data } = await callable(stripeAccount?.stripeAccountId);
     window.location.assign(data as string);
   };
 

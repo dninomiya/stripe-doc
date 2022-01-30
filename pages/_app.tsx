@@ -24,7 +24,7 @@ function MyApp({ Component, pageProps }: AppProps) {
       <DefaultSeo
         openGraph={{
           type: 'website',
-          url: 'https://flock-team.github.io/stripe-doc/',
+          url: SITE_URL,
           site_name: SITE_TITLE,
           images: [
             {

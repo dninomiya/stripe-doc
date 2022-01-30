@@ -53,7 +53,7 @@ const StripeAccount = ({ user }: Props) => {
       {stripeAccount && (
         <p>ConnectアカウントID: {stripeAccount.stripeAccountId}</p>
       )}
-      {!stripeAccount?.valid && <button>販売者情報を登録してください</button>}
+      {stripeAccount && !stripeAccount.valid && <button>販売者情報を登録してください</button>}
     </div>
   );
 };
