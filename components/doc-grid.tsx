@@ -46,7 +46,7 @@ const DocGrid = ({ type, completeDocs }: Props) => {
                 {step.tool[tool]?.map((id) => {
                   return (
                     <Link key={id} shallow href={`?id=${id}`}>
-                      <a className="flex items-center text-gray-600 dark:text-gray-500 hover:text-gray-800 hover:dark:text-gray-300 text-left space-x-2 w-full">
+                      <a className="flex items-center text-gray-600 dark:text-gray-300 hover:text-gray-800 hover:dark:text-gray-200 text-left space-x-2 w-full">
                         <CheckCircleIcon
                           className={classNames(
                             'w-6 h-6',
