@@ -14,7 +14,7 @@ import DocVideo from './doc-video';
 type Props = {
   isOpen: boolean;
   onClose: VoidFunction;
-  onComplete: (completeDocs: string[]) => void;
+  onComplete: (completeDocs: DocId[]) => void;
   id: DocId | null;
 };
 

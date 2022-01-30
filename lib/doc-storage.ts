@@ -1,13 +1,14 @@
 import { DocId } from '../docs/doc-titles';
 
 export const getCompleteDocs = () => {
-  return localStorage.getItem('complete')?.split(',') || [];
+  const docIds = localStorage.getItem('complete')?.split(',') || [];
+  return docIds as DocId[];
 };
 
 export const setComplteDoc = (id: DocId) => {
   const docs = getCompleteDocs();
   docs.push(id);
-  const newCompleteDocs = Array.from(new Set(docs));
+  const newCompleteDocs = Array.from(new Set(docs)) as DocId[];
   localStorage.setItem('complete', newCompleteDocs.join(','));
   return newCompleteDocs;
 };
@@ -19,7 +20,7 @@ export const isComplete = (id: DocId) => {
 
 export const removeCompleteDoc = (id: DocId) => {
   const docs = getCompleteDocs();
-  const newCompleteDocs = docs.filter((docId) => docId !== id);
+  const newCompleteDocs = docs.filter((docId) => docId !== id) as DocId[];
   localStorage.setItem('complete', newCompleteDocs.join(','));
   return newCompleteDocs;
 };

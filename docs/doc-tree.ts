@@ -2,15 +2,18 @@ import { DocId } from './doc-titles';
 
 export const TOOLS = ['stripe', 'nextjs', 'firebase'] as const;
 export const DOC_TYPES = ['payments', 'billing', 'connect'] as const;
+
+export type Tool = typeof TOOLS[number];
 export type DocType = typeof DOC_TYPES[number];
+export type Step = {
+  title: string;
+  tool: {
+    [toolName in typeof TOOLS[number]]?: DocId[];
+  };
+};
 
 export const DOC_TREE: {
-  [key in typeof DOC_TYPES[number]]: {
-    title: string;
-    tool: {
-      [toolName in typeof TOOLS[number]]?: DocId[];
-    };
-  }[];
+  [key in typeof DOC_TYPES[number]]: Step[];
 } = {
   payments: [
     {
@@ -138,7 +141,7 @@ export const DOC_TREE: {
     {
       title: 'Connectアカウントの作成',
       tool: {
-        stripe: ['stripe-connect-settings'],
+        stripe: ['stripe-connect-settings', 'stripe-connect-account-webhook'],
         nextjs: [
           'nextjs-create-connect-account',
           'nextjs-required-verification-information',
@@ -153,26 +156,21 @@ export const DOC_TREE: {
       title: '商品の作成と表示',
       tool: {
         stripe: ['stripe-create-products-billing', 'stripe-create-tax'],
-        nextjs: ['nextjs-list-items-billing'],
+        nextjs: ['nextjs-list-items-connect'],
       },
     },
     {
       title: '商品の購入',
       tool: {
-        nextjs: ['nextjs-checkout-payments', 'nextjs-checkout-billing'],
+        nextjs: ['nextjs-checkout-connect'],
+        firebase: ['firebase-checkout-session-connect'],
       },
     },
     {
-      title: '購入結果の表示',
+      title: 'ダッシュボードの表示',
       tool: {
-        nextjs: ['nextjs-display-role', 'nextjs-purchase-history'],
-      },
-    },
-    {
-      title: '支払い方法の管理',
-      tool: {
-        stripe: ['stripe-customer-portal-customize-billing'],
-        nextjs: ['nextjs-customer-portal-open'],
+        nextjs: ['nextjs-express-dashboard'],
+        firebase: ['firebase-express-dashboard'],
       },
     },
   ],

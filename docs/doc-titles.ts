@@ -19,9 +19,13 @@ export const DOC_TITLES = {
   'stripe-customer-portal-customize': 'カスタマーポータルの設定',
   'nextjs-customer-portal-open': 'カスタマーポータルを開く',
   'nextjs-checkout-payments': '支払いを開始',
+  'nextjs-checkout-connect': '商品の購入',
   'nextjs-firebase-initialize': 'Firebaseの初期化',
   'firebase-create-web-app': 'アプリの登録',
   'nextjs-purchase-history': '購入履歴の表示',
+  'nextjs-express-dashboard': 'ダッシュボードの表示',
+  'firebase-express-dashboard': 'ダッシュボードリンク生成',
+  'firebase-checkout-session-connect': 'チェックアウトセッションの作成',
   'nextjs-auth': 'ログイン/ログアウトの実装',
   'stripe-create-products-billing': '商品と価格を作成',
   'nextjs-list-items-billing': 'プラン一覧の表示',
@@ -33,6 +37,8 @@ export const DOC_TITLES = {
   'firebase-create-customer': 'カスタマー作成トリガーの実装',
   'nextjs-auth-connect': 'ログイン機能の実装',
   'nextjs-required-verification-information': '確認情報の入力',
+  'stripe-connect-account-webhook': 'Stripe Connect用Webhookの作成',
+  'nextjs-list-items-connect': '商品の表示',
   'firebase-required-verification-information':
     '確認情報入力用リンクとトリガー関数を作成',
 };

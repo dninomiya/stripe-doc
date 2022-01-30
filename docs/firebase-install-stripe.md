@@ -1,12 +1,12 @@
 初期化したFirebaseプロジェクトの中に `functions` ディレクトリがあるので**そこに移動した上で**以下のコマンドを実行します。
 
-```bash
+```bash:ターミナル
 npm install stripe
 ```
 
 これにより Cloud Functions で Stripe の機能にアクセスできるようになります。Stripeにアクセスするにはシークレットキーが必要なので、Stripeダッシュボードからシークレットキーを取得してCloud Functionsの環境変数に設定します。
 
-```bash
+```bash:ターミナル
 firebase functions:config:set stripe.key=シークレットキー
 ```
 

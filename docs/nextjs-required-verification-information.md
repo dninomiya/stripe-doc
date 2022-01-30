@@ -1,4 +1,4 @@
-事前に[確認情報入力用のリンク生成関数をデプロイ](?id=firebase-required-verification-information)してください。
+事前に[確認情報入力用リンクとトリガー関数を作成](?id=firebase-required-verification-information)を完了してください。
 
 以下のコードを追記して確認情報入力ページに遷移します。
 
@@ -11,9 +11,15 @@ const redirectStripeAccountForm = async () => {
   };
 
 // 変更
-{!stripeAccount?.valid && (
+{stripeAccount && !stripeAccount.valid ? (
   <button onClick={redirectStripeAccountForm}>
     販売者情報を登録してください
   </button>
+) : (
+  <p>確認情報の登録が完了しています✅</p>
 )}
 ```
+
+遷移後は画面に沿ってテスト用の情報を適宜入力してください。途中Stripeアカウントでログインするシーンがあるので既存のStripeアカウントでログインしてください。実際のユーザーはここでStripeアカウントを作成することになります。
+
+電話番号は `0000000000` を使用してください。

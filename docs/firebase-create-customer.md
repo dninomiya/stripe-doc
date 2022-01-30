@@ -31,6 +31,6 @@ export const createCustomer = fns.auth.user().onCreate(async (user) => {
 
 アップグレードが終わったら**functionsディレクトリで**以下のコマンドを使って関数をデプロイします。
 
-```bash
+```bash:ターミナル
 firebase deploy --only functions
 ```

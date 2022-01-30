@@ -2,13 +2,13 @@
 
 まずはFirebaseにログインします。以下のコマンドによってブラウザが立ち上がるのでログインしてください。
 
-```bash
+```bash:ターミナル
 firebsae login
 ```
 
 次に以下のコマンドでFirebaseプロジェクトを初期化します。
 
-```bash
+```bash:ターミナル
 firebase init
 ```
 

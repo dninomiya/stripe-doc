@@ -14,6 +14,8 @@ export const getStripeAccountFormLink = fns.https
       return accountLink.url;
     });
 
+const endpointSecret = ""; // Webhook作成後に署名シークレットを実装
+
 export const handleStripeWebhook = fns.https
     .onRequest(async (req, res) => {
       const sig = req.headers["stripe-signature"];
@@ -50,6 +52,6 @@ export const handleStripeWebhook = fns.https
     });
 ```
 
-```bash
+```bash:ターミナル
 firebase deploy --only functions
 ```
