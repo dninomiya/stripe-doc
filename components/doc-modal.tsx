@@ -87,12 +87,12 @@ export default function DocModal({ isOpen, onClose, id, onComplete }: Props) {
               leaveFrom="opacity-100 translate-y-0 sm:scale-100"
               leaveTo="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
             >
-              <div className="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full">
+              <div className="inline-block align-bottom bg-white dark:bg-slate-800 rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full">
                 <DocVideo id={docId} />
                 <div className="px-4 pt-5 pb-4 sm:p-6">
                   <Dialog.Title
                     as="h3"
-                    className="text-lg text-center leading-6 font-medium text-gray-900"
+                    className="text-lg text-center leading-6 font-medium text-gray-900 dark:text-gray-400"
                   >
                     {getDocTitle(docId)}
                   </Dialog.Title>
@@ -122,7 +122,7 @@ export default function DocModal({ isOpen, onClose, id, onComplete }: Props) {
                     )}
                     <button
                       type="button"
-                      className="mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:mt-0 sm:col-start-1 sm:text-sm"
+                      className="mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white dark:bg-slate-700 dark:border-gray-900 dark:text-gray-400 text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:mt-0 sm:col-start-1 sm:text-sm"
                       onClick={onClose}
                     >
                       閉じる

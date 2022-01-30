@@ -24,27 +24,29 @@ type Props = {
 const DocGrid = ({ type, completeDocs }: Props) => {
   return (
     <div>
-      <div className="grid grid-cols-4 gap-2 sticky z-10 top-0 py-4 border-b bg-white">
+      <div className="grid grid-cols-4 gap-2 sticky z-10 top-0 py-4 border-b dark:border-gray-700 bg-white dark:bg-slate-800">
         <div></div>
         <ToolTab TabIcon={Stripe} title="Stripe" />
         <ToolTab TabIcon={Nextdotjs} title="Next.js" />
         <ToolTab TabIcon={Firebase} title="Firebase" />
       </div>
-      <div className="divide-dashed divide-y">
+      <div className="divide-dashed divide-y dark:divide-gray-700">
         {DOC_TREE[type].map((step, stepIndex) => (
           <div className="grid grid-cols-4 gap-2 py-6" key={stepIndex}>
             <h2>
-              <span className="text-gray-500 font-bold">
+              <span className="text-gray-500 dark:text-gray-700 font-bold">
                 STEP {stepIndex + 1}
               </span>
-              <p className="font-bold text-gray-700 text-lg">{step.title}</p>
+              <span className="font-bold text-gray-700 dark:text-gray-500 text-lg block">
+                {step.title}
+              </span>
             </h2>
             {TOOLS.map((tool) => (
               <div key={tool} className="space-y-2">
                 {step.tool[tool]?.map((id) => {
                   return (
                     <Link key={id} shallow href={`?id=${id}`}>
-                      <a className="flex items-center text-gray-600 hover:text-gray-800 text-left space-x-2 w-full">
+                      <a className="flex items-center text-gray-600 dark:text-gray-500 hover:text-gray-800 hover:dark:text-gray-300 text-left space-x-2 w-full">
                         <CheckCircleIcon
                           className={classNames(
                             'w-6 h-6',

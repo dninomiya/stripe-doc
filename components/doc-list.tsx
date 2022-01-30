@@ -1,15 +1,10 @@
+import { CheckCircleIcon } from '@heroicons/react/outline';
+import { Firebase, Nextdotjs, Stripe } from '@icons-pack/react-simple-icons';
+import Link from 'next/link';
+import { useRouter } from 'next/router';
 import React from 'react';
 import { DocId, getDocTitle } from '../docs/doc-titles';
 import { DocType, DOC_TREE, Step, Tool } from '../docs/doc-tree';
-import {
-  Firebase,
-  Icon,
-  Nextdotjs,
-  Stripe,
-} from '@icons-pack/react-simple-icons';
-import Link from 'next/link';
-import { useRouter } from 'next/router';
-import { CheckCircleIcon } from '@heroicons/react/outline';
 import { classNames } from '../lib/class-names';
 
 type Props = {

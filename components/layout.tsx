@@ -31,7 +31,7 @@ const Layout: FC = ({ children }) => {
   };
 
   return (
-    <div className="min-h-full">
+    <div className="min-h-full dark:bg-slate-800 dark:text-gray-50">
       <Disclosure as="nav" className="bg-indigo-600 dark:bg-slate-800">
         {({ open }) => (
           <>

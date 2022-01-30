@@ -3,7 +3,7 @@ import React from 'react';
 
 const Footer = () => {
   return (
-    <footer className="bg-white">
+    <footer>
       <div className="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
         <p className="text-gray-500 mb-4">
           このサイトはStripeユーザーにより作られており、Stripe社とは関係ありません。
@@ -21,7 +21,7 @@ const Footer = () => {
             </a>
           </div>
           <div className="mt-8 md:mt-0 md:order-1">
-            <p className="text-center text-base text-gray-400">
+            <p className="text-center text-base opacity-20">
               &copy; 2022 nino.
             </p>
           </div>

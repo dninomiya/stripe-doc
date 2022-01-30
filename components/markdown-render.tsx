@@ -26,7 +26,7 @@ const MarkdownRender = ({ data }: Props) => {
   return (
     <ReactMarkdown
       remarkPlugins={[remarkBreaks, remarkGfm]}
-      className="prose prose-pre:p-0"
+      className="prose prose-pre:p-0 dark:prose-invert"
       transformImageUri={(src) => {
         if (process.env.NODE_ENV === 'production') {
           return `/stripe-doc` + src;
