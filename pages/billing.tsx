@@ -10,12 +10,11 @@ const Home: NextPage = () => {
       <NextSeo title="サブスクリプション" />
 
       <TutorialKit
-        videoURL="https://xxx"
         type="billing"
         title="サブスクリプション"
         description={
           <p>
-            Netflixのような継続支払いサービスは
+            Netflixのようなサブスクリプションサービスは
             <ExternalLink href="https://stripe.com/jp/billing">
               Stripe Billing
             </ExternalLink>

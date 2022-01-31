@@ -9,7 +9,6 @@ const Home: NextPage = () => {
       <NextSeo title="商品の販売" />
 
       <TutorialKit
-        videoURL="https://xxx"
         type="payments"
         title="商品の販売"
         description={

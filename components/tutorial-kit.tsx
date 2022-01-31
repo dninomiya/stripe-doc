@@ -14,21 +14,13 @@ type Props = {
   title: string;
   description: ReactNode;
   scenes: string[];
-  videoURL: string;
   demo: {
     title: string;
     description: ReactNode;
   };
 };
 
-const TutorialKit = ({
-  title,
-  description,
-  scenes,
-  type,
-  videoURL,
-  demo,
-}: Props) => {
+const TutorialKit = ({ title, description, scenes, type, demo }: Props) => {
   const [completeDocs, setCompleteDocs] = useState<DocId[]>();
   const router = useRouter();
 
@@ -55,20 +47,27 @@ const TutorialKit = ({
     setCompleteDocs(resetCompleteDocs());
   };
 
+  const videoSrc =
+    (process.env.NODE_ENV === 'production' ? '/stripe-doc' : '') +
+    '/docs/videos/' +
+    type +
+    '.mp4';
+
   return (
     <div>
       <div>
         <div className="bg-gray-50 dark:bg-slate-900 shadow-sm">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="py-10 lg:flex items-center">
-              <a
-                href={videoURL}
-                target="_blank"
-                className="aspect-video bg-slate-800 flex items-center justify-center rounded-lg lg:w-96 lg:mr-10 mb-6 lg:mb-0 shadow-lg hover:shadow-xl transition-shadow"
-                rel="noreferrer"
+              <video
+                loop
+                autoPlay
+                controlsList="nodownload"
+                controls
+                className="aspect-video bg-slate-800 rounded-lg lg:w-96 lg:mr-10 mb-6 lg:mb-0 shadow-lg hover:shadow-xl transition-shadow"
               >
-                <PlayIcon className="w-20 h-20 text-gray-300 opacity-40" />
-              </a>
+                <source src={videoSrc} />
+              </video>
               <div className="flex-1">
                 <h1 className="text-2xl mb-4 leading-6 font-semibold text-gray-800 dark:text-gray-400">
                   {title}
