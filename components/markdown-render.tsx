@@ -3,7 +3,7 @@ import { CopyToClipboard } from 'react-copy-to-clipboard';
 import toast from 'react-hot-toast';
 import ReactMarkdown from 'react-markdown';
 import { PrismLight as SyntaxHighlighter } from 'react-syntax-highlighter';
-import { synthwave84 } from 'react-syntax-highlighter/dist/cjs/styles/prism';
+import { vscDarkPlus } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import remarkBreaks from 'remark-breaks';
 import remarkGfm from 'remark-gfm';
 import ExternalLink from './external-link';
@@ -79,7 +79,7 @@ const MarkdownRender = ({ data }: Props) => {
                 </div>
               )}
               <SyntaxHighlighter
-                style={synthwave84}
+                style={vscDarkPlus}
                 language={match[1]}
                 PreTag="div"
                 customStyle={{ margin: 0 }}
