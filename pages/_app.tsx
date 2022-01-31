@@ -11,7 +11,11 @@ const SITE_URL = 'https://flock-team.github.io/stripe-doc';
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <ThemeProvider attribute="class" enableColorScheme={false}>
+    <ThemeProvider
+      attribute="class"
+      defaultTheme="light"
+      enableColorScheme={false}
+    >
       <Head>
         <link
           rel="icon"
