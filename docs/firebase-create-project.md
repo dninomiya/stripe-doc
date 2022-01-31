@@ -1,0 +1,1 @@
+[Firebase コンソール](https://console.firebase.google.com/)で [プロジェクトを追加] をクリックし、画面の指示に沿って、Firebase プロジェクトを作成してください。

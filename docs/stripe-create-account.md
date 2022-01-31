@@ -1,0 +1,1 @@
+[Stripe](https://stripe.com/jp)でアカウントを作成しましょう。
