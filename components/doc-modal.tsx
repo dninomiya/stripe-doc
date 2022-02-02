@@ -57,7 +57,10 @@ export default function DocModal({ isOpen, onClose, id, onComplete }: Props) {
         initialFocus={completeButtonRef}
         onClose={onClose}
       >
-        <div className="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
+        <Dialog.Overlay
+          as="div"
+          className="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0"
+        >
           <Transition.Child
             as={Fragment}
             enter="ease-out duration-300"
@@ -67,7 +70,7 @@ export default function DocModal({ isOpen, onClose, id, onComplete }: Props) {
             leaveFrom="opacity-100"
             leaveTo="opacity-0"
           >
-            <Dialog.Overlay className="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" />
+            <div className="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity pointer-events-none" />
           </Transition.Child>
 
           {/* This element is to trick the browser into centering the modal contents. */}
@@ -161,7 +164,7 @@ export default function DocModal({ isOpen, onClose, id, onComplete }: Props) {
               </div>
             </Transition.Child>
           )}
-        </div>
+        </Dialog.Overlay>
       </Dialog>
     </Transition.Root>
   );
