@@ -68,7 +68,7 @@ const Layout: FC = ({ children }) => {
                   <div className="ml-4 flex space-x-4 items-center md:ml-6">
                     <ThemeSwitch />
                     <a
-                      href="https://github.com/flock-team/stripe-doc"
+                      href="https://github.com/dninomiya/stripe-doc"
                       target="_blank"
                       rel="noreferrer"
                     >

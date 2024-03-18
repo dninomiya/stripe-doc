@@ -7,7 +7,7 @@ import Head from 'next/head';
 import { DefaultSeo } from 'next-seo';
 
 const SITE_TITLE = 'Stripeビギナーズガイド';
-const SITE_URL = 'https://flock-team.github.io/stripe-doc';
+const SITE_URL = 'https://dninomiya.github.io/stripe-doc';
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (

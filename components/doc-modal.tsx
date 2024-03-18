@@ -46,7 +46,7 @@ export default function DocModal({ isOpen, onClose, id, onComplete }: Props) {
   };
 
   const getGitHubDocPath = (id: DocId, mode: 'blob' | 'edit') => {
-    return `https://github.com/flock-team/stripe-doc/${mode}/main/docs/${id}.md`;
+    return `https://github.com/dninomiya/stripe-doc/${mode}/main/docs/${id}.md`;
   };
 
   return (
@@ -134,7 +134,7 @@ export default function DocModal({ isOpen, onClose, id, onComplete }: Props) {
                   <div className="items-center space-x-4 justify-end flex mt-4 text-gray-400 text-sm">
                     <a
                       href={encodeURI(
-                        `https://github.com/flock-team/stripe-doc/issues/new?body=## 該当ドキュメント\n${getGitHubDocPath(
+                        `https://github.com/dninomiya/stripe-doc/issues/new?body=## 該当ドキュメント\n${getGitHubDocPath(
                           docId,
                           'blob'
                         )}\n\n## 報告内容\n&title=ドキュメント報告: ${id}`

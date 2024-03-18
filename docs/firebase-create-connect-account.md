@@ -17,7 +17,7 @@ export const createStripeAccount = fns.https.onCall(async (_, context) => {
       name: user.displayName,
     },
     business_profile: {
-      url: "https://flock-team.github.io/stripe-doc",
+      url: "https://dninomiya.github.io/stripe-doc",
     },
   });
 

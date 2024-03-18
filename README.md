@@ -1,6 +1,6 @@
 # Stripe クイックスタートガイド 🇯🇵
 
-https://flock-team.github.io/stripe-doc/
+https://dninomiya.github.io/stripe-doc/
 
 Stripe クイックスタートガイド は Stripe を素早く導入するためのインタラクティブなチュートリアルです。動画やテキストを参考にしながらステップバイステップで実装の進めることができます。Stripe クイックスタートガイドは非公式のオープンソースプロジェクトです。
 ## コントリビュート
@@ -17,9 +17,9 @@ npm run dev
 ```
 ### ドキュメントの追加、修正
 
-1. [ドキュメントのIDとタイトルを定義](https://github.com/flock-team/stripe-doc/blob/main/docs/doc-titles.ts)
-2. IDをファイル名にしてドキュメント(md)を[docs](https://github.com/flock-team/stripe-doc/tree/main/docs)に作成
-3. [ドキュメントを任意のステップに掲載](https://github.com/flock-team/stripe-doc/blob/main/docs/doc-tree.ts)
+1. [ドキュメントのIDとタイトルを定義](https://github.com/dninomiya/stripe-doc/blob/main/docs/doc-titles.ts)
+2. IDをファイル名にしてドキュメント(md)を[docs](https://github.com/dninomiya/stripe-doc/tree/main/docs)に作成
+3. [ドキュメントを任意のステップに掲載](https://github.com/dninomiya/stripe-doc/blob/main/docs/doc-tree.ts)
 
 ### 動画の圧縮
 
